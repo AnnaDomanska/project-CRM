@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-project-CMR": {
+    "angular-project-CRM": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-project-cmr",
+            "outputPath": "dist/angular-project-crm",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-project-CMR:build:production"
+              "browserTarget": "angular-project-CRM:build:production"
             },
             "development": {
-              "browserTarget": "angular-project-CMR:build:development"
+              "browserTarget": "angular-project-CRM:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-project-CMR:build"
+            "browserTarget": "angular-project-CRM:build"
           }
         },
         "test": {
