@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ViewEncapsulation,
 } from '@angular/core';
@@ -11,6 +12,9 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { take, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -97,5 +101,33 @@ export class RegisterComponent {
     { validators: this.confirmPasswordValidator }
   );
 
-  onRegisterFormSubmitted(registerForm: FormGroup): void {}
+  constructor(
+    private _authService: AuthService,
+    private _router: Router,
+    private _cdr: ChangeDetectorRef
+  ) {}
+
+  onRegisterFormSubmitted(registerForm: FormGroup): void {
+    this._authService
+      .register({
+        email: registerForm.value.email,
+        password: registerForm.value.password,
+      })
+      .pipe(
+        take(1),
+        switchMap(() =>
+          this._authService.login({
+            email: registerForm.value.email,
+            password: registerForm.value.password,
+          })
+        )
+      )
+      .subscribe({
+        next: () => this._router.navigate(['leads']),
+        error: (e) => {
+          this.registerForm.setErrors({ beValidator: e.error.message }),
+            this._cdr.detectChanges();
+        },
+      });
+  }
 }

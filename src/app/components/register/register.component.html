@@ -118,7 +118,8 @@
                                                     *ngIf="registerForm.touched && registerForm.get('terms')?.hasError('required')">
                                                     You have to accept terms</div>
                                             </div>
-
+                                            <div class="text-danger fs--1" *ngIf="registerForm.hasError('beValidator')">
+                                                {{registerForm.getError('beValidator')}}</div>
                                             <button class="btn btn-primary w-100 mb-3" type="submit" value="Submit"
                                                 [disabled]="!registerForm.valid">Sign
                                                 up</button>
