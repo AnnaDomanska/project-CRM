@@ -1,24 +1,24 @@
-export interface UserResponse {
-  readonly user: UserData;
+export interface RegisterUserResponse {
+  readonly user: RegisterUserData;
   readonly providerId: string;
-  readonly _tokenResponse: UserTokenResponse;
+  readonly _tokenResponse: RegisterUserTokenResponse;
   readonly operationType: string;
 }
 
-interface UserData {
+interface RegisterUserData {
   readonly uid: string;
   readonly email: string;
   readonly emailVerified: boolean;
   readonly isAnonymous: boolean;
-  readonly providerData: UserProviderData;
-  readonly stsTokenMenager: UserTokenMenager;
+  readonly providerData: RegisterUserProviderData;
+  readonly stsTokenMenager: RegisterUserTokenMenager;
   readonly createdAt: string;
   readonly lastLoginAt: string;
   readonly apiKey: string;
   readonly appName: string;
 }
 
-interface UserProviderData {
+interface RegisterUserProviderData {
   readonly providerId: string;
   readonly uid: string;
   readonly displayName: string;
@@ -27,13 +27,13 @@ interface UserProviderData {
   readonly photoUrl: string;
 }
 
-interface UserTokenMenager {
+interface RegisterUserTokenMenager {
   readonly refreshToken: string;
   readonly accessToken: string;
   readonly expirationTime: number;
 }
 
-interface UserTokenResponse {
+interface RegisterUserTokenResponse {
   readonly kind: string;
   readonly idToken: string;
   readonly email: string;

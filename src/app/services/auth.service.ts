@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { CredentialsModel } from '../models/credentials.model';
 import { CredentialsResponse } from '../responses/credentials.response';
 import { ApiResponse } from '../responses/api.response';
-import { UserResponse } from '../responses/user.response';
+import { RegisterUserResponse } from '../responses/register-user.response';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -20,9 +20,9 @@ export class AuthService {
       .pipe(map((resp) => resp.data));
   }
 
-  register(registerData: CredentialsModel): Observable<UserResponse> {
+  register(registerData: CredentialsModel): Observable<RegisterUserResponse> {
     return this._httpClient
-      .post<ApiResponse<UserResponse>>(
+      .post<ApiResponse<RegisterUserResponse>>(
         `https://us-central1-courses-auth.cloudfunctions.net/auth/register2`,
         { data: registerData }
       )
