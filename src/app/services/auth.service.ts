@@ -20,7 +20,10 @@ export class AuthService {
 
   constructor(private _httpClient: HttpClient, private _storage: Storage) {}
 
-  login(loginData: CredentialsModel): Observable<CredentialsResponse> {
+  login(
+    loginData: CredentialsModel,
+    isRemembered: boolean
+  ): Observable<CredentialsResponse> {
     return this._httpClient
       .post<ApiResponse<CredentialsResponse>>(
         `https://us-central1-courses-auth.cloudfunctions.net/auth/login`,
@@ -31,7 +34,6 @@ export class AuthService {
         tap((data) => {
           this._accessTokenSubject.next(data.accessToken);
           this._refreshTokenSubject.next(data.refreshToken);
-      
         })
       );
   }

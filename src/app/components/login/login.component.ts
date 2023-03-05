@@ -19,6 +19,7 @@ export class LoginComponent {
   readonly loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
+    remember: new FormControl(true),
   });
 
   constructor(
@@ -32,7 +33,7 @@ export class LoginComponent {
       .login({
         email: loginForm.value.email,
         password: loginForm.value.password,
-      })
+      }, loginForm.value.remember)
       .subscribe({
         next: () => this._router.navigate(['/leads']),
         error: (e) => {
