@@ -8,6 +8,7 @@ import { LoginComponentModule } from './components/login/login.component-module'
 import { RegisterComponentModule } from './components/register/register.component-module';
 import { VerifyComponentModule } from './components/verify/verify.component-module';
 import { LeadsComponentModule } from './components/leads/leads.component-module';
+import { VerifyGuard } from './guards/verify/verify.guard';
 
 @NgModule({
   imports: [
@@ -15,13 +16,18 @@ import { LeadsComponentModule } from './components/leads/leads.component-module'
       { path: 'auth/login', component: LoginComponent },
       { path: 'auth/register', component: RegisterComponent },
       { path: 'verify', component: VerifyComponent },
-      { path: 'leads', component: LeadsComponent }
+      {
+        path: 'leads',
+        data: { redirectUrlEmail: 'verify' },
+        canActivate: [VerifyGuard],
+        component: LeadsComponent,
+      },
     ]),
     LoginComponentModule,
     RegisterComponentModule,
     VerifyComponentModule,
-    LeadsComponentModule
+    LeadsComponentModule,
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

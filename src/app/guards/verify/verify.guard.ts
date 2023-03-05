@@ -21,7 +21,7 @@ export class VerifyGuard implements CanActivate {
     return this._userService.getUserData().pipe(
       take(1),
       map((userData) => {
-        return userData.email_verified
+        return userData.email_verified === true
           ? true
           : this._router.parseUrl(route.data['redirectUrlEmail'] || 'verify');
       })
