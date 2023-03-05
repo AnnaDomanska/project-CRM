@@ -31,7 +31,7 @@ export class UserService {
   postUserBio(bio: string): Observable<void> {
     return this._httpClient.post<void>(
       `https://us-central1-courses-auth.cloudfunctions.net/auth/add-bio`,
-      { data: bio }
+      { data: { content: bio } }
     );
   }
 }

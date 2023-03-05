@@ -11,6 +11,8 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-bio',
@@ -56,5 +58,11 @@ export class BioComponent {
     ]),
   });
 
-  onBioFormSubmitted(bioForm: FormGroup) {}
+  constructor(private _userService: UserService, private _router: Router) {}
+
+  onBioFormSubmitted(bioForm: FormGroup) {
+    this._userService
+      .postUserBio(bioForm.get('bioContent')?.value)
+      .subscribe({ next: () => this._router.navigate(['leads']) });
+  }
 }
