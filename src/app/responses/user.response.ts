@@ -1,0 +1,34 @@
+export interface UserResponse {
+  readonly user: UserData;
+}
+
+interface UserData {
+  readonly id: string;
+  readonly context: UserContext
+}
+
+interface UserContext {
+  
+    readonly iss: string;
+    readonly aud: string;
+    readonly auth_time: number;
+    readonly user_id: string;
+    readonly sub: string;
+    readonly iat: number;
+    readonly exp: number;
+    readonly email: string;
+    readonly email_verified: string;
+    readonly firebase: UserFirebase;
+    readonly uid: string;
+}
+  
+  interface UserFirebase {
+    readonly identities: FirebaseIndentities;
+    readonly sign_in_provider: string;
+  }
+  
+  interface FirebaseIndentities {
+    readonly email: string;
+  }
+  
+
