@@ -20,10 +20,11 @@ export class AuthInterceptor implements HttpInterceptor {
     if (blackList.find((url) => request.url.endsWith(url))) {
       return next.handle(request);
     } else {
+      console.log('interceptor added')
       return this._authService.accessToken$.pipe(
         switchMap((token) => {
           const newRequest = request.clone({
-            setHeaders: { Authorizaton: `Bearer ${token}` },
+            setHeaders: { Authorization: `Bearer ${token}` },
           });
           return next.handle(newRequest);
         })
