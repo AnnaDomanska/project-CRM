@@ -9,11 +9,15 @@ import { VerifyComponentModule } from './components/verify/verify.component-modu
 
 @NgModule({
   imports: [
-    RouterModule.forRoot([{ path: 'auth/login', component: LoginComponent }, { path: 'auth/register', component: RegisterComponent }, { path: 'verify', component: VerifyComponent }]),
+    RouterModule.forRoot([
+      { path: 'auth/login', component: LoginComponent },
+      { path: 'auth/register', component: RegisterComponent },
+      { path: 'verify', component: VerifyComponent },
+    ]),
     LoginComponentModule,
     RegisterComponentModule,
-    VerifyComponentModule
+    VerifyComponentModule,
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
