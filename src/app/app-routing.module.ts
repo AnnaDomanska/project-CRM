@@ -10,6 +10,8 @@ import { RegisterComponentModule } from './components/register/register.componen
 import { VerifyComponentModule } from './components/verify/verify.component-module';
 import { LeadsComponentModule } from './components/leads/leads.component-module';
 import { BioComponentModule } from './components/bio/bio.component-module';
+import { VerifyGuard } from './guards/verify/verify.guard';
+import { CompleteProfileGuard } from './guards/complete-profile/complete-profile.guard';
 
 @NgModule({
   imports: [
@@ -17,15 +19,20 @@ import { BioComponentModule } from './components/bio/bio.component-module';
       { path: 'auth/login', component: LoginComponent },
       { path: 'auth/register', component: RegisterComponent },
       { path: 'verify', component: VerifyComponent },
-      { path: 'leads', component: LeadsComponent },
-      { path: 'complete-profile', component: BioComponent }
+      {
+        path: 'leads',
+        component: LeadsComponent,
+        canActivate: [VerifyGuard, CompleteProfileGuard],
+        data: { redirectUrlEmail: 'verify' },
+      },
+      { path: 'complete-profile', component: BioComponent },
     ]),
     LoginComponentModule,
     RegisterComponentModule,
     VerifyComponentModule,
     LeadsComponentModule,
-    BioComponentModule
+    BioComponentModule,
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
