@@ -6,6 +6,7 @@ import {
 import {
   AbstractControl,
   FormControl,
+  FormGroup,
   ValidationErrors,
   ValidatorFn,
   Validators,
@@ -28,7 +29,7 @@ export class BioComponent {
       return null;
     }
 
-    return !bioContent.match(/(\S{1,}\s{1,}){9,}/)
+    return !bioContent.match(/(\S{1,}\s{1,}){10,}/)
       ? { wordsValidator: true }
       : null;
   };
@@ -47,9 +48,13 @@ export class BioComponent {
       : null;
   };
 
-  readonly bioContent: FormControl = new FormControl('', [
-    Validators.required,
-    this.sentencesValidator,
-    this.wordsValidator,
-  ]);
+  readonly bioForm: FormGroup = new FormGroup({
+    bioContent: new FormControl('', [
+      Validators.required,
+      this.sentencesValidator,
+      this.wordsValidator,
+    ]),
+  });
+
+  onBioFormSubmitted(bioForm: FormGroup) {}
 }
