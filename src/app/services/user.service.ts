@@ -7,10 +7,6 @@ import { UserResponse } from '../responses/user.response';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private _isVerifiedSubject: BehaviorSubject<boolean> =
-    new BehaviorSubject<boolean>(false);
-  public isVerified$: Observable<boolean> =
-    this._isVerifiedSubject.asObservable();
 
   private _user$: Observable<UserModel> = this._httpClient
     .get<ApiResponse<UserResponse>>(
@@ -26,4 +22,5 @@ export class UserService {
   public getUserData(): Observable<UserModel> {
     return this._user$;
   }
+
 }

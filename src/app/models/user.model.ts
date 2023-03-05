@@ -7,7 +7,7 @@ export interface UserModel {
   readonly iat: number;
   readonly exp: number;
   readonly email: string;
-  readonly email_verified: string;
+  readonly email_verified: boolean;
   readonly firebase: UserFirebase;
   readonly uid: string;
 }
