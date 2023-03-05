@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, map, shareReplay } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { UserModel } from '../models/user.model';
 import { ApiResponse } from '../responses/api.response';
 import { UserResponse } from '../responses/user.response';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
+  private _isVerifiedSubject: BehaviorSubject<boolean> =
+    new BehaviorSubject<boolean>(false);
+  public isVerified$: Observable<boolean> =
+    this._isVerifiedSubject.asObservable();
 
   private _user$: Observable<UserModel> = this._httpClient
     .get<ApiResponse<UserResponse>>(
@@ -18,7 +21,6 @@ export class UserService {
       shareReplay(1)
     );
 
- 
   constructor(private _httpClient: HttpClient) {}
 
   public getUserData(): Observable<UserModel> {
