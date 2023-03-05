@@ -119,7 +119,7 @@ export class RegisterComponent {
           this._authService.login({
             email: registerForm.value.email,
             password: registerForm.value.password,
-          })
+          }, false)
         )
       )
       .subscribe({

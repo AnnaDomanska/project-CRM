@@ -34,6 +34,10 @@ export class AuthService {
         tap((data) => {
           this._accessTokenSubject.next(data.accessToken);
           this._refreshTokenSubject.next(data.refreshToken);
+
+          if(isRemembered){
+            this.setUserToStorage(data)
+          }
         })
       );
   }
