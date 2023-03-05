@@ -7,7 +7,6 @@ import { UserResponse } from '../responses/user.response';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-
   private _user$: Observable<UserModel> = this._httpClient
     .get<ApiResponse<UserResponse>>(
       'https://us-central1-courses-auth.cloudfunctions.net/auth/me'
@@ -19,8 +18,20 @@ export class UserService {
 
   constructor(private _httpClient: HttpClient) {}
 
-  public getUserData(): Observable<UserModel> {
+  getUserData(): Observable<UserModel> {
     return this._user$;
   }
 
+  getUserBio(): Observable<any> {
+    return this._httpClient.get<any>(
+      `https://us-central1-courses-auth.cloudfunctions.net/auth/my-bio`
+    );
+  }
+
+  postUserBio(bio: string): Observable<void> {
+    return this._httpClient.post<void>(
+      `https://us-central1-courses-auth.cloudfunctions.net/auth/add-bio`,
+      { data: { content: bio } }
+    );
+  }
 }
