@@ -1,31 +1,58 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { CredentialsModel } from '../models/credentials.model';
 import { CredentialsResponse } from '../responses/credentials.response';
 import { ApiResponse } from '../responses/api.response';
-import { UserResponse } from '../responses/user.response';
+import { RegisterUserResponse } from '../responses/register-user.response';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  constructor(private _httpClient: HttpClient) {}
+  private _accessTokenSubject: BehaviorSubject<string | null> =
+    new BehaviorSubject<string | null>(this._storage.getItem('accessToken'));
+  public accessToken$: Observable<string | null> =
+    this._accessTokenSubject.asObservable();
+  private _refreshTokenSubject: BehaviorSubject<string | null> =
+    new BehaviorSubject<string | null>(this._storage.getItem('refreshToken'));
+  public refreshToken$: Observable<string | null> =
+    this._refreshTokenSubject.asObservable();
 
-  login(loginData: CredentialsModel): Observable<CredentialsResponse> {
+  constructor(private _httpClient: HttpClient, private _storage: Storage) {}
+
+  login(
+    loginData: CredentialsModel,
+    isRemembered: boolean
+  ): Observable<CredentialsResponse> {
     return this._httpClient
       .post<ApiResponse<CredentialsResponse>>(
         `https://us-central1-courses-auth.cloudfunctions.net/auth/login`,
         { data: loginData }
       )
-      .pipe(map((resp) => resp.data));
+      .pipe(
+        map((resp) => resp.data),
+        tap((data) => {
+          this._accessTokenSubject.next(data.accessToken);
+          this._refreshTokenSubject.next(data.refreshToken);
+
+          if(isRemembered){
+            this.setUserToStorage(data)
+          }
+        })
+      );
   }
 
-  register(registerData: CredentialsModel): Observable<UserResponse> {
+  register(registerData: CredentialsModel): Observable<RegisterUserResponse> {
     return this._httpClient
-      .post<ApiResponse<UserResponse>>(
+      .post<ApiResponse<RegisterUserResponse>>(
         `https://us-central1-courses-auth.cloudfunctions.net/auth/register2`,
         { data: registerData }
       )
       .pipe(map((resp) => resp.data));
+  }
+
+  setUserToStorage(userData: CredentialsResponse): void {
+    this._storage.setItem('accessToken', userData.accessToken);
+    this._storage.setItem('refreshToken', userData.refreshToken);
   }
 }

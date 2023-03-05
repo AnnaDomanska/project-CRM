@@ -1,13 +1,4 @@
-export interface UserResponse {
-  readonly user: UserData;
-}
-
-interface UserData {
-  readonly id: string;
-  readonly context: UserContext;
-}
-
-interface UserContext {
+export interface UserModel {
   readonly iss: string;
   readonly aud: string;
   readonly auth_time: number;
