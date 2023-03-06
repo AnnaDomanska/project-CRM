@@ -35,8 +35,8 @@ export class AuthService {
           this._accessTokenSubject.next(data.accessToken);
           this._refreshTokenSubject.next(data.refreshToken);
 
-          if(isRemembered){
-            this.setUserToStorage(data)
+          if (isRemembered) {
+            this.setUserToStorage(data);
           }
         })
       );
@@ -51,8 +51,19 @@ export class AuthService {
       .pipe(map((resp) => resp.data));
   }
 
+  logout(): void {
+    this._accessTokenSubject.next(null);
+    this._refreshTokenSubject.next(null);
+    this.removeUserFromStorage();
+  }
+
   setUserToStorage(userData: CredentialsResponse): void {
     this._storage.setItem('accessToken', userData.accessToken);
     this._storage.setItem('refreshToken', userData.refreshToken);
+  }
+
+  removeUserFromStorage(): void {
+    this._storage.removeItem('accessToken');
+    this._storage.removeItem('refreshToken');
   }
 }
