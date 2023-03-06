@@ -17,7 +17,6 @@ export class NotLoggedInGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> {
-    console.log('nli activated')
     return this._userService.getUserData().pipe(
       take(1),
       catchError((e: HttpErrorResponse) => {

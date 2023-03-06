@@ -16,19 +16,19 @@ import { AutoLoginGuard } from './guards/auto-login/auto-login.guard';
 import { VerifyGuard } from './guards/verify/verify.guard';
 import { CompleteProfileGuard } from './guards/complete-profile/complete-profile.guard';
 import { NotLoggedInGuard } from './guards/not-logged-in/not-logged-in.guard';
+import { AuthRoutesModule } from './auth.routes';
+import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
       {
-        path: 'auth/login',
-        component: LoginComponent,
-        canActivate: [AutoLoginGuard],
+        path: '', component: AppComponent, canActivate: [AutoLoginGuard]
       },
       {
-        path: 'auth/register',
-        component: RegisterComponent,
+        path: 'auth',
         canActivate: [AutoLoginGuard],
+        loadChildren: () => AuthRoutesModule,
       },
       {
         path: 'verify',
