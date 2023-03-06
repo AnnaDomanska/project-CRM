@@ -19,7 +19,7 @@ export class AutoLoginGuard implements CanActivate {
     return this._userService.getUserData().pipe(
       take(1),
       map((userData) => {
-        return userData ? true : this._router.parseUrl('auth/login');
+        return userData ? this._router.parseUrl('leads') : false;
       })
     );
   }
