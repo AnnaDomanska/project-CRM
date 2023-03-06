@@ -12,24 +12,48 @@ import { VerifyComponentModule } from './components/verify/verify.component-modu
 import { LeadsComponentModule } from './components/leads/leads.component-module';
 import { BioComponentModule } from './components/bio/bio.component-module';
 import { LoggedOutComponentModule } from './components/logged-out/logged-out.component-module';
+import { AutoLoginGuard } from './guards/auto-login/auto-login.guard';
+import { VerifyGuard } from './guards/verify/verify.guard';
+import { CompleteProfileGuard } from './guards/complete-profile/complete-profile.guard';
+import { NotLoggedInGuard } from './guards/not-logged-in/not-logged-in.guard';
+import { AuthRoutesModule } from './auth.routes';
+import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      { path: 'auth/login', component: LoginComponent },
-      { path: 'auth/register', component: RegisterComponent },
-      { path: 'verify', component: VerifyComponent },
-      { path: 'leads', component: LeadsComponent },
-      { path: 'complete-profile', component: BioComponent },
-      { path: 'logged-out', component: LoggedOutComponent }
+      {
+        path: '', component: AppComponent, canActivate: [AutoLoginGuard]
+      },
+      {
+        path: 'auth',
+        canActivate: [AutoLoginGuard],
+        loadChildren: () => AuthRoutesModule,
+      },
+      {
+        path: 'verify',
+        component: VerifyComponent,
+        canActivate: [NotLoggedInGuard],
+      },
+      {
+        path: 'leads',
+        component: LeadsComponent,
+        canActivate: [NotLoggedInGuard, VerifyGuard, CompleteProfileGuard],
+      },
+      {
+        path: 'complete-profile',
+        component: BioComponent,
+        canActivate: [NotLoggedInGuard],
+      },
+      { path: 'logged-out', component: LoggedOutComponent },
     ]),
     LoginComponentModule,
     RegisterComponentModule,
     VerifyComponentModule,
     LeadsComponentModule,
     BioComponentModule,
-    LoggedOutComponentModule
+    LoggedOutComponentModule,
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
