@@ -51,6 +51,12 @@ export class AuthService {
       .pipe(map((resp) => resp.data));
   }
 
+  logout(): void {
+    this._accessTokenSubject.next(null);
+    this._refreshTokenSubject.next(null);
+    this.removeUserFromStorage();
+  }
+
   setUserToStorage(userData: CredentialsResponse): void {
     this._storage.setItem('accessToken', userData.accessToken);
     this._storage.setItem('refreshToken', userData.refreshToken);
