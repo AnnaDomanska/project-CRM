@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
@@ -6,7 +7,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { map, Observable, take } from 'rxjs';
+import { catchError, Observable, take, of, map } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
 @Injectable({ providedIn: 'root' })
@@ -16,10 +17,14 @@ export class NotLoggedInGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> {
+    console.log('nli activated')
     return this._userService.getUserData().pipe(
       take(1),
-      map((userData) => {
-        return userData ? true : this._router.parseUrl('auth/login');
+      catchError((e: HttpErrorResponse) => {
+        return of('error');
+      }),
+      map((resp) => {
+        return resp === 'error' ? this._router.parseUrl('auth/login') : true;
       })
     );
   }

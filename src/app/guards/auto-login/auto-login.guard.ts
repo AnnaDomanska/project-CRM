@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
@@ -6,7 +7,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable, take, map } from 'rxjs';
+import { Observable, take, map, catchError, of } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
 @Injectable({ providedIn: 'root' })
@@ -18,8 +19,11 @@ export class AutoLoginGuard implements CanActivate {
   ): Observable<boolean | UrlTree> {
     return this._userService.getUserData().pipe(
       take(1),
-      map((userData) => {
-        return userData ? this._router.parseUrl('leads') : false;
+      catchError((e: HttpErrorResponse) => {
+        return of('error');
+      }),
+      map((resp) => {
+        return resp !== 'error' ? this._router.parseUrl('leads') : true;
       })
     );
   }
