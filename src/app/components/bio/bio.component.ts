@@ -11,7 +11,9 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
+import { UserModel } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -57,6 +59,9 @@ export class BioComponent {
       this.wordsValidator,
     ]),
   });
+  readonly userEmail$: Observable<string> = this._userService
+    .getUserData()
+    .pipe(map((data) => data.email));
 
   constructor(private _userService: UserService, private _router: Router) {}
 
