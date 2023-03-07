@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, take, map } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -22,8 +22,15 @@ export class LeadsComponent {
 
   constructor(private _authService: AuthService, private _router: Router) {}
 
-  showMenu(value: boolean): void {
-    this._dropdownMenuStatusSubject.next(value);
+  showMenu(): void {
+    this.dropdownMenuStatus$
+      .pipe(
+        take(1),
+        map((actualStatus) =>
+          this._dropdownMenuStatusSubject.next(!actualStatus)
+        )
+      )
+      .subscribe();
   }
 
   logout(): void {
