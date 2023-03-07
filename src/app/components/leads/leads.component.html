@@ -38,7 +38,7 @@
                       <img class="rounded-circle " src="../../assets/img/team/72x72/57.webp" alt="" />
 
                     </div>
-                    <h6 class="mt-2 text-black">Jerry Seinfield</h6>
+                    <h6 class="mt-2 text-black" *ngIf="userEmail$ | async as email">{{email}}</h6>
                   </div>
                 </div>
 

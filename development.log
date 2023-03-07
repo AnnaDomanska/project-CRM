@@ -841,3 +841,345 @@
 	"message": "[CLI] Called Command injectable/inject",
 	"level": "info"
 }
+[info] [CLI] Calling Query entity/actions: {
+	"funcParams": {
+		"clickedPath": "d:\\PROJEKTY\\project-CRM\\src\\app\\components\\leads\\leads.component.ts"
+	},
+	"level": "info",
+	"message": "[CLI] Calling Query entity/actions"
+}
+[info] [CLI] Called Query entity/actions: {
+	"result": {
+		"context": {},
+		"children": [
+			{
+				"label": "Properties",
+				"children": [
+					{
+						"label": "dropdownMenuStatus$",
+						"children": [
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP",
+								"label": "Map Property",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/map/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_TAP",
+								"label": "Property Side Effect",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/tap/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_JOIN",
+								"label": "Join Observable to Property",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/join/flow"
+							}
+						]
+					},
+					{
+						"actionId": "ADD_FORM",
+						"label": "Create Form Property",
+						"callPath": [],
+						"flowUrl": "angular-component/form-properties/add/flow"
+					},
+					{
+						"actionId": "RXJS_PROPERTY_CREATE",
+						"label": "Create Data Property",
+						"callPath": [],
+						"flowUrl": "rxjs/properties/data/flow"
+					},
+					{
+						"actionId": "RXJS_PROPERTY_SUBJECT_CREATE",
+						"label": "Create Subject Property",
+						"callPath": [],
+						"flowUrl": "rxjs/properties/subject/flow"
+					}
+				]
+			},
+			{
+				"label": "Inject",
+				"actionId": "INJECT",
+				"callPath": [],
+				"flowUrl": "injectable/inject/flow"
+			},
+			{
+				"label": "Methods",
+				"children": [
+					{
+						"label": "showMenu()",
+						"children": [
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP",
+								"label": "Map Statement",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/map/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP_TO",
+								"label": "Map To",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/map-to/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_TAP",
+								"label": "Statement Side Effect",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/tap/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_JOIN",
+								"label": "Join Observable to Statement",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/join/flow"
+							}
+						]
+					},
+					{
+						"label": "logout()",
+						"children": [
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP",
+								"label": "Map Statement",
+								"callPath": [
+									"logout"
+								],
+								"flowUrl": "rxjs/call-expressions/map/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP_TO",
+								"label": "Map To",
+								"callPath": [
+									"logout"
+								],
+								"flowUrl": "rxjs/call-expressions/map-to/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_TAP",
+								"label": "Statement Side Effect",
+								"callPath": [
+									"logout"
+								],
+								"flowUrl": "rxjs/call-expressions/tap/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_JOIN",
+								"label": "Join Observable to Statement",
+								"callPath": [
+									"logout"
+								],
+								"flowUrl": "rxjs/call-expressions/join/flow"
+							}
+						]
+					},
+					{
+						"actionId": "METHOD_CREATE",
+						"label": "Create New Method",
+						"callPath": [],
+						"flowUrl": "method/create/flow"
+					}
+				]
+			},
+			{
+				"label": "Add Component to Route",
+				"actionId": "ADD_COMPONENT_TO_ROUTE",
+				"callPath": [],
+				"flowUrl": "routing/add-component/flow"
+			}
+		]
+	},
+	"level": "info",
+	"message": "[CLI] Called Query entity/actions"
+}
+[info] [CLI] Calling Query rxjs/properties/data/flow: {
+	"funcParams": {
+		"actionId": "RXJS_PROPERTY_CREATE",
+		"label": "Create Data Property",
+		"callPath": [],
+		"flowUrl": "rxjs/properties/data/flow"
+	},
+	"level": "info",
+	"message": "[CLI] Calling Query rxjs/properties/data/flow"
+}
+[info] [CLI] Called Query rxjs/properties/data/flow: {
+	"result": {
+		"context": {},
+		"steps": [
+			{
+				"contextId": "name",
+				"title": "What is the property name?",
+				"subtitle": "in camelCase (e.g. data, dataSource)",
+				"type": "text-input",
+				"canBeEmpty": false
+			},
+			{
+				"contextId": "entity",
+				"title": "Which dependency to use?",
+				"type": "multi-option",
+				"options": [
+					{
+						"name": "LeadsComponent",
+						"path": "d:/PROJEKTY/project-CRM/src/app/components/leads/leads.component.ts"
+					},
+					{
+						"name": "AuthService",
+						"path": "d:/PROJEKTY/project-CRM/src/app/services/auth.service.ts"
+					},
+					{
+						"name": "UserService",
+						"path": "d:/PROJEKTY/project-CRM/src/app/services/user.service.ts"
+					},
+					{
+						"name": "Router",
+						"path": "d:/PROJEKTY/project-CRM/node_modules/@angular/router/index.d.ts"
+					},
+					{
+						"name": "ActivatedRoute",
+						"path": "d:/PROJEKTY/project-CRM/node_modules/@angular/router/index.d.ts"
+					}
+				],
+				"extraOptions": [],
+				"property": "name",
+				"canBeEmpty": false
+			},
+			{
+				"contextId": "observable",
+				"title": "Which observable to use?",
+				"type": "multi-option",
+				"options": {
+					"LeadsComponent": [
+						{
+							"name": "dropdownMenuStatus$",
+							"callPath": [
+								"dropdownMenuStatus$"
+							]
+						}
+					],
+					"AuthService": [
+						{
+							"name": "accessToken$",
+							"callPath": [
+								"accessToken$"
+							]
+						},
+						{
+							"name": "refreshToken$",
+							"callPath": [
+								"refreshToken$"
+							]
+						},
+						{
+							"name": "login()",
+							"callPath": [
+								"login"
+							]
+						},
+						{
+							"name": "register()",
+							"callPath": [
+								"register"
+							]
+						}
+					],
+					"UserService": [
+						{
+							"name": "_user$",
+							"callPath": [
+								"_user$"
+							]
+						},
+						{
+							"name": "getUserData()",
+							"callPath": [
+								"getUserData"
+							]
+						},
+						{
+							"name": "getUserBio()",
+							"callPath": [
+								"getUserBio"
+							]
+						},
+						{
+							"name": "postUserBio()",
+							"callPath": [
+								"postUserBio"
+							]
+						}
+					],
+					"Router": [],
+					"ActivatedRoute": [
+						{
+							"name": "url",
+							"callPath": [
+								"url"
+							]
+						},
+						{
+							"name": "params",
+							"callPath": [
+								"params"
+							]
+						},
+						{
+							"name": "queryParams",
+							"callPath": [
+								"queryParams"
+							]
+						},
+						{
+							"name": "fragment",
+							"callPath": [
+								"fragment"
+							]
+						},
+						{
+							"name": "data",
+							"callPath": [
+								"data"
+							]
+						},
+						{
+							"name": "title",
+							"callPath": [
+								"title"
+							]
+						}
+					]
+				},
+				"extraOptions": [],
+				"param": "entity.name",
+				"property": "name",
+				"canBeEmpty": false
+			}
+		],
+		"request": {
+			"config": {
+				"url": "rxjs/properties/data/create",
+				"payload": {
+					"propertyName": "name.value",
+					"dependencyCallPath": "observable.callPath",
+					"dependencyName": "entity.name",
+					"dependencyPath": "entity.path"
+				}
+			}
+		}
+	},
+	"level": "info",
+	"message": "[CLI] Called Query rxjs/properties/data/flow"
+}

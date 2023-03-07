@@ -3,9 +3,12 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { BehaviorSubject, Observable, take, map } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { UserModel } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-leads',
@@ -19,8 +22,16 @@ export class LeadsComponent {
     new BehaviorSubject<boolean>(false);
   public dropdownMenuStatus$: Observable<boolean> =
     this._dropdownMenuStatusSubject.asObservable();
+    
+  readonly userEmail$: Observable<string> = this._userService
+    .getUserData()
+    .pipe(map((data) => data.email));
 
-  constructor(private _authService: AuthService, private _router: Router) {}
+  constructor(
+    private _authService: AuthService,
+    private _router: Router,
+    private _userService: UserService
+  ) {}
 
   showMenu(): void {
     this.dropdownMenuStatus$
