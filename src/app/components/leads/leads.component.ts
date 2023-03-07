@@ -4,6 +4,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-leads',
@@ -18,7 +20,14 @@ export class LeadsComponent {
   public dropdownMenuStatus$: Observable<boolean> =
     this._dropdownMenuStatusSubject.asObservable();
 
+  constructor(private _authService: AuthService, private _router: Router) {}
+
   showMenu(value: boolean): void {
     this._dropdownMenuStatusSubject.next(value);
+  }
+
+  logout(): void {
+    this._authService.logout();
+    this._router.navigate(['logged-out']);
   }
 }

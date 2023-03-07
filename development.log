@@ -1,0 +1,843 @@
+[info] [CLI] Calling Query entity/actions: {
+	"funcParams": {
+		"clickedPath": "d:\\PROJEKTY\\project-CRM\\src\\app\\components\\leads\\leads.component.ts"
+	},
+	"level": "info",
+	"message": "[CLI] Calling Query entity/actions"
+}
+[info] [CLI] Called Query entity/actions: {
+	"result": {
+		"context": {},
+		"children": [
+			{
+				"label": "Properties",
+				"children": [
+					{
+						"label": "dropdownMenuStatus$",
+						"children": [
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP",
+								"label": "Map Property",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/map/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_TAP",
+								"label": "Property Side Effect",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/tap/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_JOIN",
+								"label": "Join Observable to Property",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/join/flow"
+							}
+						]
+					},
+					{
+						"actionId": "ADD_FORM",
+						"label": "Create Form Property",
+						"callPath": [],
+						"flowUrl": "angular-component/form-properties/add/flow"
+					},
+					{
+						"actionId": "RXJS_PROPERTY_CREATE",
+						"label": "Create Data Property",
+						"callPath": [],
+						"flowUrl": "rxjs/properties/data/flow"
+					},
+					{
+						"actionId": "RXJS_PROPERTY_SUBJECT_CREATE",
+						"label": "Create Subject Property",
+						"callPath": [],
+						"flowUrl": "rxjs/properties/subject/flow"
+					}
+				]
+			},
+			{
+				"label": "Inject",
+				"actionId": "INJECT",
+				"callPath": [],
+				"flowUrl": "injectable/inject/flow"
+			},
+			{
+				"label": "Methods",
+				"children": [
+					{
+						"label": "showMenu()",
+						"children": [
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP",
+								"label": "Map Statement",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/map/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP_TO",
+								"label": "Map To",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/map-to/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_TAP",
+								"label": "Statement Side Effect",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/tap/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_JOIN",
+								"label": "Join Observable to Statement",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/join/flow"
+							}
+						]
+					},
+					{
+						"actionId": "METHOD_CREATE",
+						"label": "Create New Method",
+						"callPath": [],
+						"flowUrl": "method/create/flow"
+					}
+				]
+			},
+			{
+				"label": "Add Component to Route",
+				"actionId": "ADD_COMPONENT_TO_ROUTE",
+				"callPath": [],
+				"flowUrl": "routing/add-component/flow"
+			}
+		]
+	},
+	"level": "info",
+	"message": "[CLI] Called Query entity/actions"
+}
+[info] [CLI] Calling Query entity/actions: {
+	"funcParams": {
+		"clickedPath": "d:\\PROJEKTY\\project-CRM\\src\\app\\components\\leads\\leads.component.ts"
+	},
+	"level": "info",
+	"message": "[CLI] Calling Query entity/actions"
+}
+[info] [CLI] Called Query entity/actions: {
+	"result": {
+		"context": {},
+		"children": [
+			{
+				"label": "Properties",
+				"children": [
+					{
+						"label": "dropdownMenuStatus$",
+						"children": [
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP",
+								"label": "Map Property",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/map/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_TAP",
+								"label": "Property Side Effect",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/tap/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_JOIN",
+								"label": "Join Observable to Property",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/join/flow"
+							}
+						]
+					},
+					{
+						"actionId": "ADD_FORM",
+						"label": "Create Form Property",
+						"callPath": [],
+						"flowUrl": "angular-component/form-properties/add/flow"
+					},
+					{
+						"actionId": "RXJS_PROPERTY_CREATE",
+						"label": "Create Data Property",
+						"callPath": [],
+						"flowUrl": "rxjs/properties/data/flow"
+					},
+					{
+						"actionId": "RXJS_PROPERTY_SUBJECT_CREATE",
+						"label": "Create Subject Property",
+						"callPath": [],
+						"flowUrl": "rxjs/properties/subject/flow"
+					}
+				]
+			},
+			{
+				"label": "Inject",
+				"actionId": "INJECT",
+				"callPath": [],
+				"flowUrl": "injectable/inject/flow"
+			},
+			{
+				"label": "Methods",
+				"children": [
+					{
+						"label": "showMenu()",
+						"children": [
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP",
+								"label": "Map Statement",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/map/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP_TO",
+								"label": "Map To",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/map-to/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_TAP",
+								"label": "Statement Side Effect",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/tap/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_JOIN",
+								"label": "Join Observable to Statement",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/join/flow"
+							}
+						]
+					},
+					{
+						"actionId": "METHOD_CREATE",
+						"label": "Create New Method",
+						"callPath": [],
+						"flowUrl": "method/create/flow"
+					}
+				]
+			},
+			{
+				"label": "Add Component to Route",
+				"actionId": "ADD_COMPONENT_TO_ROUTE",
+				"callPath": [],
+				"flowUrl": "routing/add-component/flow"
+			}
+		]
+	},
+	"level": "info",
+	"message": "[CLI] Called Query entity/actions"
+}
+[info] [CLI] Calling Query method/create/flow: {
+	"funcParams": {
+		"actionId": "METHOD_CREATE",
+		"label": "Create New Method",
+		"callPath": [],
+		"flowUrl": "method/create/flow"
+	},
+	"level": "info",
+	"message": "[CLI] Calling Query method/create/flow"
+}
+[info] [CLI] Called Query method/create/flow: {
+	"result": {
+		"context": {},
+		"steps": [
+			{
+				"contextId": "name",
+				"title": "What is the method name?",
+				"subtitle": "e.g. getAll",
+				"type": "text-input",
+				"canBeEmpty": false
+			},
+			{
+				"contextId": "params",
+				"title": "What are the method parameters?",
+				"subtitle": "(Optional): in csv format e.g. id:number,name:string",
+				"type": "multi-input",
+				"canBeEmpty": false
+			},
+			{
+				"contextId": "returnType",
+				"title": "What does the method return?",
+				"type": "multi-option",
+				"options": [
+					{
+						"name": "string"
+					},
+					{
+						"name": "string[]"
+					},
+					{
+						"name": "number"
+					},
+					{
+						"name": "number[]"
+					},
+					{
+						"name": "boolean"
+					},
+					{
+						"name": "boolean[]"
+					},
+					{
+						"name": "void"
+					},
+					{
+						"name": "void[]"
+					}
+				],
+				"extraOptions": [],
+				"property": "name",
+				"canBeEmpty": false
+			}
+		],
+		"request": {
+			"config": {
+				"url": "method/create",
+				"payload": {
+					"name": "name.value",
+					"params": "params.value",
+					"returnType": "returnType.name"
+				}
+			}
+		}
+	},
+	"level": "info",
+	"message": "[CLI] Called Query method/create/flow"
+}
+[info] [CLI] Calling Query entity/actions: {
+	"funcParams": {
+		"clickedPath": "d:\\PROJEKTY\\project-CRM\\src\\app\\components\\leads\\leads.component.ts"
+	},
+	"level": "info",
+	"message": "[CLI] Calling Query entity/actions"
+}
+[info] [CLI] Called Query entity/actions: {
+	"result": {
+		"context": {},
+		"children": [
+			{
+				"label": "Properties",
+				"children": [
+					{
+						"label": "dropdownMenuStatus$",
+						"children": [
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP",
+								"label": "Map Property",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/map/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_TAP",
+								"label": "Property Side Effect",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/tap/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_JOIN",
+								"label": "Join Observable to Property",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/join/flow"
+							}
+						]
+					},
+					{
+						"actionId": "ADD_FORM",
+						"label": "Create Form Property",
+						"callPath": [],
+						"flowUrl": "angular-component/form-properties/add/flow"
+					},
+					{
+						"actionId": "RXJS_PROPERTY_CREATE",
+						"label": "Create Data Property",
+						"callPath": [],
+						"flowUrl": "rxjs/properties/data/flow"
+					},
+					{
+						"actionId": "RXJS_PROPERTY_SUBJECT_CREATE",
+						"label": "Create Subject Property",
+						"callPath": [],
+						"flowUrl": "rxjs/properties/subject/flow"
+					}
+				]
+			},
+			{
+				"label": "Inject",
+				"actionId": "INJECT",
+				"callPath": [],
+				"flowUrl": "injectable/inject/flow"
+			},
+			{
+				"label": "Methods",
+				"children": [
+					{
+						"label": "showMenu()",
+						"children": [
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP",
+								"label": "Map Statement",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/map/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP_TO",
+								"label": "Map To",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/map-to/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_TAP",
+								"label": "Statement Side Effect",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/tap/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_JOIN",
+								"label": "Join Observable to Statement",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/join/flow"
+							}
+						]
+					},
+					{
+						"label": "logout()",
+						"children": [
+							{
+								"actionId": "RXJS_METHOD_STATEMENT_CREATE",
+								"label": "Create Statement",
+								"callPath": [
+									"logout"
+								],
+								"flowUrl": "rxjs/methods/statement/flow"
+							}
+						]
+					},
+					{
+						"actionId": "METHOD_CREATE",
+						"label": "Create New Method",
+						"callPath": [],
+						"flowUrl": "method/create/flow"
+					}
+				]
+			},
+			{
+				"label": "Add Component to Route",
+				"actionId": "ADD_COMPONENT_TO_ROUTE",
+				"callPath": [],
+				"flowUrl": "routing/add-component/flow"
+			}
+		]
+	},
+	"level": "info",
+	"message": "[CLI] Called Query entity/actions"
+}
+[info] [CLI] Calling Query injectable/inject/flow: {
+	"funcParams": {
+		"label": "Inject",
+		"actionId": "INJECT",
+		"callPath": [],
+		"flowUrl": "injectable/inject/flow"
+	},
+	"level": "info",
+	"message": "[CLI] Calling Query injectable/inject/flow"
+}
+[info] [CLI] Called Query injectable/inject/flow: {
+	"result": {
+		"context": {},
+		"steps": [
+			{
+				"contextId": "injectable",
+				"title": "Which entity to inject?",
+				"type": "multi-option",
+				"options": [
+					{
+						"file": "d:/PROJEKTY/project-CRM/src/app/services/auth.service.ts",
+						"name": "AuthService",
+						"type": "ANGULAR_SERVICE",
+						"dataType": "Internal"
+					},
+					{
+						"file": "d:/PROJEKTY/project-CRM/src/app/services/user.service.ts",
+						"name": "UserService",
+						"type": "ANGULAR_SERVICE",
+						"dataType": "Internal"
+					},
+					{
+						"id": "router",
+						"dataType": "External",
+						"name": "Router",
+						"type": "Router",
+						"relatedTypes": {}
+					},
+					{
+						"id": "activatedRoute",
+						"dataType": "External",
+						"name": "ActivatedRoute",
+						"type": "ActivatedRoute",
+						"relatedTypes": {}
+					}
+				],
+				"extraOptions": [],
+				"property": "name",
+				"canBeEmpty": false
+			}
+		],
+		"request": {
+			"config": {
+				"url": "injectable/inject",
+				"payload": {
+					"injectingPath": "injectable.file",
+					"type": "injectable.type",
+					"dataType": "injectable.dataType"
+				}
+			}
+		}
+	},
+	"level": "info",
+	"message": "[CLI] Called Query injectable/inject/flow"
+}
+[info] [CLI] Calling Command injectable/inject: {
+	"funcParams": {
+		"injectingPath": "d:/PROJEKTY/project-CRM/src/app/services/auth.service.ts",
+		"type": "ANGULAR_SERVICE",
+		"dataType": "Internal"
+	},
+	"level": "info",
+	"message": "[CLI] Calling Command injectable/inject"
+}
+[info] [CommandBus]: Dispatching command INJECT_SERVICE_DEPENDENCY: {
+	"commandName": "INJECT_SERVICE_DEPENDENCY",
+	"payload": {
+		"entityFilePath": "d:/PROJEKTY/project-CRM/src/app/components/leads/leads.component.ts",
+		"injectingFilePath": "d:/PROJEKTY/project-CRM/src/app/services/auth.service.ts"
+	},
+	"level": "info",
+	"message": "[CommandBus]: Dispatching command INJECT_SERVICE_DEPENDENCY"
+}
+[info] [EventBus]: Broadcasting event ServiceDependencyInjected: {
+	"type": "ServiceDependencyInjected",
+	"payload": {
+		"entityFilePath": "d:/PROJEKTY/project-CRM/src/app/components/leads/leads.component.ts",
+		"injectingFilePath": "d:/PROJEKTY/project-CRM/src/app/services/auth.service.ts"
+	},
+	"level": "info",
+	"message": "[EventBus]: Broadcasting event ServiceDependencyInjected"
+}
+[info] [EventBus]: Broadcasted ServiceDependencyInjected: {
+	"event": {
+		"entityFilePath": "d:/PROJEKTY/project-CRM/src/app/components/leads/leads.component.ts",
+		"injectingFilePath": "d:/PROJEKTY/project-CRM/src/app/services/auth.service.ts"
+	},
+	"level": "info",
+	"message": "[EventBus]: Broadcasted ServiceDependencyInjected"
+}
+[info] [CommandBus]: Handled  INJECT_SERVICE_DEPENDENCY: {
+	"commandName": "INJECT_SERVICE_DEPENDENCY",
+	"payload": {
+		"entityFilePath": "d:/PROJEKTY/project-CRM/src/app/components/leads/leads.component.ts",
+		"injectingFilePath": "d:/PROJEKTY/project-CRM/src/app/services/auth.service.ts"
+	},
+	"level": "info",
+	"message": "[CommandBus]: Handled  INJECT_SERVICE_DEPENDENCY"
+}
+[info] [CLI] Called Command injectable/inject: {
+	"message": "[CLI] Called Command injectable/inject",
+	"level": "info"
+}
+[info] [CLI] Calling Query entity/actions: {
+	"funcParams": {
+		"clickedPath": "d:\\PROJEKTY\\project-CRM\\src\\app\\components\\leads\\leads.component.ts"
+	},
+	"level": "info",
+	"message": "[CLI] Calling Query entity/actions"
+}
+[info] [CLI] Called Query entity/actions: {
+	"result": {
+		"context": {},
+		"children": [
+			{
+				"label": "Properties",
+				"children": [
+					{
+						"label": "dropdownMenuStatus$",
+						"children": [
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP",
+								"label": "Map Property",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/map/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_TAP",
+								"label": "Property Side Effect",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/tap/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_JOIN",
+								"label": "Join Observable to Property",
+								"callPath": [
+									"dropdownMenuStatus$"
+								],
+								"flowUrl": "rxjs/call-expressions/join/flow"
+							}
+						]
+					},
+					{
+						"actionId": "ADD_FORM",
+						"label": "Create Form Property",
+						"callPath": [],
+						"flowUrl": "angular-component/form-properties/add/flow"
+					},
+					{
+						"actionId": "RXJS_PROPERTY_CREATE",
+						"label": "Create Data Property",
+						"callPath": [],
+						"flowUrl": "rxjs/properties/data/flow"
+					},
+					{
+						"actionId": "RXJS_PROPERTY_SUBJECT_CREATE",
+						"label": "Create Subject Property",
+						"callPath": [],
+						"flowUrl": "rxjs/properties/subject/flow"
+					}
+				]
+			},
+			{
+				"label": "Inject",
+				"actionId": "INJECT",
+				"callPath": [],
+				"flowUrl": "injectable/inject/flow"
+			},
+			{
+				"label": "Methods",
+				"children": [
+					{
+						"label": "showMenu()",
+						"children": [
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP",
+								"label": "Map Statement",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/map/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP_TO",
+								"label": "Map To",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/map-to/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_TAP",
+								"label": "Statement Side Effect",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/tap/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_JOIN",
+								"label": "Join Observable to Statement",
+								"callPath": [
+									"showMenu"
+								],
+								"flowUrl": "rxjs/call-expressions/join/flow"
+							}
+						]
+					},
+					{
+						"label": "logout()",
+						"children": [
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP",
+								"label": "Map Statement",
+								"callPath": [
+									"logout"
+								],
+								"flowUrl": "rxjs/call-expressions/map/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_MAP_TO",
+								"label": "Map To",
+								"callPath": [
+									"logout"
+								],
+								"flowUrl": "rxjs/call-expressions/map-to/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_TAP",
+								"label": "Statement Side Effect",
+								"callPath": [
+									"logout"
+								],
+								"flowUrl": "rxjs/call-expressions/tap/flow"
+							},
+							{
+								"actionId": "RXJS_CALL_EXPRESSIONS_JOIN",
+								"label": "Join Observable to Statement",
+								"callPath": [
+									"logout"
+								],
+								"flowUrl": "rxjs/call-expressions/join/flow"
+							}
+						]
+					},
+					{
+						"actionId": "METHOD_CREATE",
+						"label": "Create New Method",
+						"callPath": [],
+						"flowUrl": "method/create/flow"
+					}
+				]
+			},
+			{
+				"label": "Add Component to Route",
+				"actionId": "ADD_COMPONENT_TO_ROUTE",
+				"callPath": [],
+				"flowUrl": "routing/add-component/flow"
+			}
+		]
+	},
+	"level": "info",
+	"message": "[CLI] Called Query entity/actions"
+}
+[info] [CLI] Calling Query injectable/inject/flow: {
+	"funcParams": {
+		"label": "Inject",
+		"actionId": "INJECT",
+		"callPath": [],
+		"flowUrl": "injectable/inject/flow"
+	},
+	"level": "info",
+	"message": "[CLI] Calling Query injectable/inject/flow"
+}
+[info] [CLI] Called Query injectable/inject/flow: {
+	"result": {
+		"context": {},
+		"steps": [
+			{
+				"contextId": "injectable",
+				"title": "Which entity to inject?",
+				"type": "multi-option",
+				"options": [
+					{
+						"file": "d:/PROJEKTY/project-CRM/src/app/services/user.service.ts",
+						"name": "UserService",
+						"type": "ANGULAR_SERVICE",
+						"dataType": "Internal"
+					},
+					{
+						"id": "router",
+						"dataType": "External",
+						"name": "Router",
+						"type": "Router",
+						"relatedTypes": {}
+					},
+					{
+						"id": "activatedRoute",
+						"dataType": "External",
+						"name": "ActivatedRoute",
+						"type": "ActivatedRoute",
+						"relatedTypes": {}
+					}
+				],
+				"extraOptions": [],
+				"property": "name",
+				"canBeEmpty": false
+			}
+		],
+		"request": {
+			"config": {
+				"url": "injectable/inject",
+				"payload": {
+					"injectingPath": "injectable.file",
+					"type": "injectable.type",
+					"dataType": "injectable.dataType"
+				}
+			}
+		}
+	},
+	"level": "info",
+	"message": "[CLI] Called Query injectable/inject/flow"
+}
+[info] [CLI] Calling Command injectable/inject: {
+	"funcParams": {
+		"type": "Router",
+		"dataType": "External"
+	},
+	"level": "info",
+	"message": "[CLI] Calling Command injectable/inject"
+}
+[info] [CommandBus]: Dispatching command INJECT_EXTERNAL_DEPENDENCY: {
+	"commandName": "INJECT_EXTERNAL_DEPENDENCY",
+	"payload": {
+		"entityFilePath": "d:/PROJEKTY/project-CRM/src/app/components/leads/leads.component.ts",
+		"externalType": "Router",
+		"genericFilePaths": []
+	},
+	"level": "info",
+	"message": "[CommandBus]: Dispatching command INJECT_EXTERNAL_DEPENDENCY"
+}
+[info] [CommandBus]: Handled  INJECT_EXTERNAL_DEPENDENCY: {
+	"commandName": "INJECT_EXTERNAL_DEPENDENCY",
+	"payload": {
+		"entityFilePath": "d:/PROJEKTY/project-CRM/src/app/components/leads/leads.component.ts",
+		"externalType": "Router",
+		"genericFilePaths": []
+	},
+	"level": "info",
+	"message": "[CommandBus]: Handled  INJECT_EXTERNAL_DEPENDENCY"
+}
+[info] [CLI] Called Command injectable/inject: {
+	"message": "[CLI] Called Command injectable/inject",
+	"level": "info"
+}
