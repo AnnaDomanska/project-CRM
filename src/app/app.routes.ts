@@ -23,7 +23,7 @@ import { AppComponent } from './app.component';
   imports: [
     RouterModule.forRoot([
       {
-        path: '', component: AppComponent, canActivate: [AutoLoginGuard]
+        path: '', component: AppComponent, canActivate: [AutoLoginGuard, NotLoggedInGuard]
       },
       {
         path: 'auth',
