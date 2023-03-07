@@ -13,7 +13,6 @@ import {
 } from '@angular/forms';
 import { Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
-import { UserModel } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 
 @Component({

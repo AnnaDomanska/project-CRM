@@ -6,6 +6,7 @@ import { CredentialsModel } from '../models/credentials.model';
 import { CredentialsResponse } from '../responses/credentials.response';
 import { ApiResponse } from '../responses/api.response';
 import { RegisterUserResponse } from '../responses/register-user.response';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -26,7 +27,7 @@ export class AuthService {
   ): Observable<CredentialsResponse> {
     return this._httpClient
       .post<ApiResponse<CredentialsResponse>>(
-        `https://us-central1-courses-auth.cloudfunctions.net/auth/login`,
+        `${environment.apiUrl}auth/login`,
         { data: loginData }
       )
       .pipe(
@@ -45,7 +46,7 @@ export class AuthService {
   register(registerData: CredentialsModel): Observable<RegisterUserResponse> {
     return this._httpClient
       .post<ApiResponse<RegisterUserResponse>>(
-        `https://us-central1-courses-auth.cloudfunctions.net/auth/register2`,
+        `${environment.apiUrl}auth/register2`,
         { data: registerData }
       )
       .pipe(map((resp) => resp.data));

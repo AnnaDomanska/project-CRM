@@ -4,13 +4,12 @@ import { BehaviorSubject, Observable, map, shareReplay } from 'rxjs';
 import { UserModel } from '../models/user.model';
 import { ApiResponse } from '../responses/api.response';
 import { UserResponse } from '../responses/user.response';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
   private _user$: Observable<UserModel> = this._httpClient
-    .get<ApiResponse<UserResponse>>(
-      'https://us-central1-courses-auth.cloudfunctions.net/auth/me'
-    )
+    .get<ApiResponse<UserResponse>>(`${environment.apiUrl}auth/me`)
     .pipe(
       map((resp) => resp.data.user.context),
       shareReplay(1)
@@ -23,15 +22,12 @@ export class UserService {
   }
 
   getUserBio(): Observable<any> {
-    return this._httpClient.get<any>(
-      `https://us-central1-courses-auth.cloudfunctions.net/auth/my-bio`
-    );
+    return this._httpClient.get<any>(`${environment.apiUrl}auth/my-bio`);
   }
 
   postUserBio(bio: string): Observable<void> {
-    return this._httpClient.post<void>(
-      `https://us-central1-courses-auth.cloudfunctions.net/auth/add-bio`,
-      { data: { content: bio } }
-    );
+    return this._httpClient.post<void>(`${environment.apiUrl}auth/add-bio`, {
+      data: { content: bio },
+    });
   }
 }
