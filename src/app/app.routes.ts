@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { VerifyComponent } from './components/verify/verify.component';
 import { LeadsComponent } from './components/leads/leads.component';
 import { BioComponent } from './components/bio/bio.component';
@@ -18,12 +16,17 @@ import { CompleteProfileGuard } from './guards/complete-profile/complete-profile
 import { NotLoggedInGuard } from './guards/not-logged-in/not-logged-in.guard';
 import { AuthRoutesModule } from './auth.routes';
 import { AppComponent } from './app.component';
+import { CreateLeadComponent } from './components/create-lead/create-lead.component';
+import { AdminGuard } from './guards/admin/admin.guard';
+import { CreateLeadComponentModule } from './components/create-lead/create-lead.component-module';
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
       {
-        path: '', component: AppComponent, canActivate: [AutoLoginGuard, NotLoggedInGuard]
+        path: '',
+        component: AppComponent,
+        canActivate: [AutoLoginGuard, NotLoggedInGuard],
       },
       {
         path: 'auth',
@@ -41,6 +44,16 @@ import { AppComponent } from './app.component';
         canActivate: [NotLoggedInGuard, VerifyGuard, CompleteProfileGuard],
       },
       {
+        path: 'create-lead',
+        component: CreateLeadComponent,
+        canActivate: [
+          NotLoggedInGuard,
+          VerifyGuard,
+          CompleteProfileGuard,
+          AdminGuard,
+        ],
+      },
+      {
         path: 'complete-profile',
         component: BioComponent,
         canActivate: [NotLoggedInGuard],
@@ -53,6 +66,7 @@ import { AppComponent } from './app.component';
     LeadsComponentModule,
     BioComponentModule,
     LoggedOutComponentModule,
+    CreateLeadComponentModule,
   ],
   exports: [RouterModule],
 })
