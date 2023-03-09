@@ -64,11 +64,11 @@ export class LeadsComponent {
         websiteLink: lead.websiteLink.includes('http')
           ? lead.websiteLink
           : `http://${lead.websiteLink}`,
-        linkedinLink: lead.linkedinLink,
+        linkedinLink: lead.linkedinLink === 'string' ? '' : lead.linkedinLink,
         scopes: (lead.activityIds ?? []).map((id) => activitiesMap[id]?.name),
         hiring: lead.hiring,
-        industry: lead.industry,
-        location: lead.location,
+        industry: lead.industry === 'string' ? '' : lead.industry,
+        location: lead.location === 'string' ? '' : lead.location,
         size: lead.companySize,
         revenue: lead.annualRevenue,
       };
