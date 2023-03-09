@@ -44,6 +44,9 @@
     "model": {
       "type": "DATA_STRUCTURE"
     },
+    "queryModel": {
+      "type": "DATA_STRUCTURE"
+    },
     "response": {
       "type": "DATA_STRUCTURE"
     },
