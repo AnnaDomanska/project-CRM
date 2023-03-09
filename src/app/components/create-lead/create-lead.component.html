@@ -23,6 +23,10 @@
                         <input class="form-control" id="floatingInputCompanyname" type="text" placeholder="Company name"
                             formControlName="name" />
                         <label for="floatingInputCompanyname">Company name</label>
+                        <div class="text-danger fs--1"
+                            *ngIf="createLeadForm.touched && createLeadForm.get('name')?.hasError('required')">
+                            Company name is
+                            required</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
@@ -30,6 +34,13 @@
                         <input class="form-control" id="floatingInputWebsitelink" type="text" placeholder="Website link"
                             formControlName="websiteLink" />
                         <label for="floatingInputWebsitelink">Website link</label>
+                        <div class="text-danger fs--1"
+                            *ngIf="createLeadForm.touched && createLeadForm.get('websiteLink')?.hasError('required')">
+                            Website link is
+                            required</div>
+                        <div class="text-danger fs--1"
+                            *ngIf="createLeadForm.touched && createLeadForm.get('websiteLink')?.hasError('pattern')">
+                            You should type a valid website link (try to add 'https:// before)'</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
@@ -37,6 +48,13 @@
                         <input class="form-control" id="floatingInputLinkedin" type="text" placeholder="Linkedin link"
                             formControlName="linkedinLink" />
                         <label for="floatingInputLinkedin">Linkedin link</label>
+                        <div class="text-danger fs--1"
+                            *ngIf="createLeadForm.touched && createLeadForm.get('linkedinLink')?.hasError('required')">
+                            Linkedin link is
+                            required</div>
+                        <div class="text-danger fs--1"
+                            *ngIf="createLeadForm.touched && createLeadForm.get('linkedinLink')?.hasError('pattern')">
+                            You should type a valid website link (try to add 'https:// before)'</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
@@ -44,6 +62,10 @@
                         <input class="form-control" id="floatingInputLocation" type="text" placeholder="Location"
                             formControlName="location" />
                         <label for="floatingInputLocation">Location</label>
+                        <div class="text-danger fs--1"
+                            *ngIf="createLeadForm.touched && createLeadForm.get('location')?.hasError('required')">
+                            Location is
+                            required</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
@@ -51,6 +73,10 @@
                         <input class="form-control" id="floatingInputIndustry" type="text" placeholder="Industry"
                             formControlName="industry" />
                         <label for="floatingInputIndustry">Industry</label>
+                        <div class="text-danger fs--1"
+                            *ngIf="createLeadForm.touched && createLeadForm.get('industry')?.hasError('required')">
+                            Industry is
+                            required</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
@@ -58,6 +84,10 @@
                         <input class="form-control" id="floatingInputRevenue" type="number" placeholder="revenue"
                             formControlName="annualRevenue" />
                         <label for="floatingInputRevenue">Annual revenue </label>
+                        <div class="text-danger fs--1"
+                            *ngIf="createLeadForm.touched && createLeadForm.get('annualRevenue')?.hasError('required')">
+                            Revenue is
+                            required</div>
                     </div>
                 </div>
                 <h4 class="mt-6">Activities</h4>
@@ -65,8 +95,8 @@
                     <form formGroupName="activities">
                         <div class="form-floating">
                             <div class="form-check form-check-inline" *ngFor="let activity of activities$ | async">
-                                <input class="form-check-input" id="activity.id" type="checkbox"
-                                    value="activity.name" />
+                                <input class="form-check-input" [id]="activity.id" type="checkbox" [value]="activity.id"
+                                    formControlName="{{activity.id}}" />
                                 <label class="form-check-label" for="inlineCheckbox1">{{activity.name}}</label>
                             </div>
                         </div>

@@ -3,8 +3,15 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
+import { Observable, tap } from 'rxjs';
 import { ActivityModel } from '../../models/activity.model';
 import { LeadsService } from '../../services/leads.service';
 
@@ -16,9 +23,33 @@ import { LeadsService } from '../../services/leads.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateLeadComponent {
-  readonly activitiesForm: FormGroup = new FormGroup({});
-  readonly activities$: Observable<ActivityModel[]> =
-    this._leadsService.getActivities();
+  minOneCheckedValidator: ValidatorFn = (
+    control: AbstractControl
+  ): ValidationErrors | null => {
+    const numberOfChecked = Object.keys(control.value).reduce(
+      (prev: string[], curr: string) => {
+        if (control.value[curr]) {
+          return [...prev, curr];
+        } else {
+          return prev;
+        }
+      },
+      []
+    ).length;
+
+    console.log(numberOfChecked);
+
+    if (numberOfChecked > 0) {
+      return null;
+    } return { minOneChecked: true };
+  };
+
+  readonly activitiesForm: FormGroup = new FormGroup({}, [
+    this.minOneCheckedValidator,
+  ]);
+  readonly activities$: Observable<ActivityModel[]> = this._leadsService
+    .getActivities()
+    .pipe(tap((data) => this.createActivitiesFormControls(data)));
 
   constructor(private _leadsService: LeadsService) {}
 
@@ -50,11 +81,22 @@ export class CreateLeadComponent {
     industry: new FormControl('', [Validators.required]),
     annualRevenue: new FormControl('', [Validators.required]),
     activities: this.activitiesForm,
-    totalSize: new FormControl('', [Validators.required, Validators.min(0)]),
-    devSize: new FormControl('', [Validators.required, Validators.min(0)]),
-    feSize: new FormControl('', [Validators.required, Validators.min(0)]),
+    totalSize: new FormControl('', [Validators.required, Validators.min(1)]),
+    devSize: new FormControl('', [Validators.required, Validators.min(1)]),
+    feSize: new FormControl('', [Validators.required, Validators.min(1)]),
     hiring: this.hiringForm,
     status: new FormControl('', [Validators.required]),
     notes: new FormControl(''),
   });
+
+  ngAfterViewInit() {
+    this.activitiesForm.valueChanges
+      .pipe(tap((data) => console.log(data)))
+      .subscribe();
+  }
+  createActivitiesFormControls(activities: ActivityModel[]): void {
+    activities.forEach((activity) =>
+      this.activitiesForm.addControl(activity.id, new FormControl(false))
+    );
+  }
 }
