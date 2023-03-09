@@ -194,66 +194,35 @@
                         </div>
                       </td>
                       <td class="align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-end">
-                        <div><span class="badge badge-phoenix badge-phoenix-warning">Internal Projects</span></div>
-                        <div><span class="badge badge-phoenix badge-phoenix-warning">External Projects</span></div>
-                        <div><span class="badge badge-phoenix badge-phoenix-warning">Recruitment Agency </span></div>
+                        <ng-container *ngFor="let scope of lead.scopes">
+                          <div><span class="badge badge-phoenix badge-phoenix-warning">{{scope}}</span>
+                          </div>
+                        </ng-container>
                       </td>
                       <td class="align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-end">
                         <div>Is hiring: <i class="fa-solid fa-check"></i></div>
                         <div>Juniors: <i class="fa-solid fa-check"></i></div>
-                        <div>Talent Program : <i class="fa-solid fa-check"></i></div>
+                        <div>Talent Program : <i class="fa-solid fa-xmark"></i>
+                        </div>
                       </td>
-                      <td
-                        class="company align-middle white-space-nowrap text-600 ps-4 border-end fw-semi-bold text-1000">
-                        MarketTech</td>
-                      <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end">Global</td>
-                      <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end">
-                        <div>Total: 50000</div>
-                        <div>Dev: 35000</div>
-                        <div>FE: 10000</div>
+                      <td class=" company align-middle white-space-nowrap text-600 ps-4 border-end fw-semi-bold
+                            text-1000">
+                        {{lead.industry}}
                       </td>
                       <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end">
-                        <div>Total: 5000</div>
-                        <div>PE: 1</div>
+                        {{lead.location}}</td>
+                      <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end">
+                        <div>Total: {{lead.size.total}}</div>
+                        <div>Dev: {{lead.size.dev}}</div>
+                        <div>FE: {{lead.size.fe}}</div>
+                      </td>
+                      <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end">
+                        <div>Total: {{lead.revenue}}</div>
+
                       </td>
                       <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end"><span
                           class="badge badge-phoenix badge-phoenix-primary">Investigation</span></td>
                     </tr>
-                    <!-- <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                      <td class="name align-middle white-space-nowrap">
-                        <div class="d-flex align-items-center">
-                          <div><a class="fs-0 fw-bold" href="#">Facebook</a>
-                            <div class="d-flex align-items-center justify-content-around">
-                              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                              <a href="#"><i class="fa-solid fa-link"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-end">
-                        <div><span class="badge badge-phoenix badge-phoenix-warning">Internal Projects</span></div>
-                      </td>
-                      <td class="align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-end">
-                        <div>Is hiring: <i class="fa-solid fa-check"></i></div>
-                        <div>Juniors: <i class="fa-solid fa-xmark"></i></div>
-                        <div>Talent Program : <i class="fa-solid fa-xmark"></i></div>
-                      </td>
-                      <td
-                        class="company align-middle white-space-nowrap text-600 ps-4 border-end fw-semi-bold text-1000">
-                        MarketTech</td>
-                      <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end">Global</td>
-                      <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end">
-                        <div>Total: 42000</div>
-                        <div>Dev: 38000</div>
-                        <div>FE: 8000</div>
-                      </td>
-                      <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end">
-                        <div>Total: 2000</div>
-                        <div>PE: 2.1</div>
-                      </td>
-                      <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end"><span
-                          class="badge badge-phoenix badge-phoenix-primary">Investigation</span></td>
-                    </tr> -->
                   </tbody>
                 </table>
               </div>
