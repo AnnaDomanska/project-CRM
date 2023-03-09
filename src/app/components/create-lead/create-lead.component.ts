@@ -14,17 +14,27 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateLeadComponent {
   readonly createLeadForm: FormGroup = new FormGroup({
-    name: new FormControl(),
-    websiteLink: new FormControl(),
-    location: new FormControl(),
-    industry: new FormControl(),
-    annualRevenue: new FormControl(),
-    activities: new FormControl(),
-    totalSize: new FormControl(),
-    devSize: new FormControl(),
-    feSize: new FormControl(),
+    name: new FormControl('', [Validators.required]),
+    websiteLink: new FormControl('', [
+      Validators.required,
+      Validators.pattern(
+        /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/
+      ),
+    ]),
+    location: new FormControl('', [
+      Validators.required,
+      Validators.pattern(
+        /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/
+      ),
+    ]),
+    industry: new FormControl('', [Validators.required]),
+    annualRevenue: new FormControl('', [Validators.required]),
+    activities: new FormControl('', [Validators.required]),
+    totalSize: new FormControl('', [Validators.required, Validators.min(0)]),
+    devSize: new FormControl('', [Validators.required, Validators.min(0)]),
+    feSize: new FormControl('', [Validators.required, Validators.min(0)]),
     hiring: new FormControl(),
     status: new FormControl(),
-    notes: new FormControl(),
+    notes: new FormControl(''),
   });
 }
