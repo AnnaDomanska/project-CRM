@@ -98,7 +98,11 @@
                                 <input class="form-check-input" [id]="activity.id" type="checkbox" [value]="activity.id"
                                     formControlName="{{activity.id}}" />
                                 <label class="form-check-label" for="inlineCheckbox1">{{activity.name}}</label>
+
                             </div>
+                            <div class="text-danger fs--1"
+                                *ngIf="createLeadForm.touched && activitiesForm.hasError('minOneChecked')">
+                                You should checked at least one activity.</div>
                         </div>
                     </form>
 

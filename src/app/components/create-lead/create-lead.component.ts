@@ -37,11 +37,10 @@ export class CreateLeadComponent {
       []
     ).length;
 
-    console.log(numberOfChecked);
-
     if (numberOfChecked > 0) {
       return null;
-    } return { minOneChecked: true };
+    }
+    return { minOneChecked: true };
   };
 
   readonly activitiesForm: FormGroup = new FormGroup({}, [
@@ -89,11 +88,6 @@ export class CreateLeadComponent {
     notes: new FormControl(''),
   });
 
-  ngAfterViewInit() {
-    this.activitiesForm.valueChanges
-      .pipe(tap((data) => console.log(data)))
-      .subscribe();
-  }
   createActivitiesFormControls(activities: ActivityModel[]): void {
     activities.forEach((activity) =>
       this.activitiesForm.addControl(activity.id, new FormControl(false))
