@@ -21,12 +21,13 @@ export class CreateLeadComponent {
         /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/
       ),
     ]),
-    location: new FormControl('', [
+    linkedinLink: new FormControl('', [
       Validators.required,
       Validators.pattern(
         /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/
       ),
     ]),
+    location: new FormControl('', [Validators.required]),
     industry: new FormControl('', [Validators.required]),
     annualRevenue: new FormControl('', [Validators.required]),
     activities: new FormControl('', [Validators.required]),
@@ -37,4 +38,8 @@ export class CreateLeadComponent {
     status: new FormControl(),
     notes: new FormControl(''),
   });
+
+  onCreateLeadFormSubmitted(createLeadForm: FormGroup) {
+    console.log(createLeadForm.value);
+  }
 }
