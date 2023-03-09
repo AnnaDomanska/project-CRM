@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { LeadModel } from '../models/lead.model';
+import { ApiResponse } from '../responses/api.response';
 import { ActivityModel } from '../models/activity.model';
 import { environment } from 'src/environments/environment';
-import { ApiResponse } from '../responses/api.response';
 
 @Injectable({ providedIn: 'root' })
 export class LeadsService {
@@ -22,5 +23,12 @@ export class LeadsService {
         `${environment.apiUrl}leads/activities`
       )
       .pipe(map((resp) => resp.data));
+  }
+
+  createLead(leadData: LeadModel): Observable<any> {
+    return this._httpClient.post<any>(
+      `https://us-central1-courses-auth.cloudfunctions.net/leads`,
+      { data: leadData }
+    );
   }
 }
