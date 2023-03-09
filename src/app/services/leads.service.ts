@@ -16,7 +16,11 @@ export class LeadsService {
       .pipe(map((resp) => resp.data));
   }
 
-  getActivities(): Observable<any> {
-    return this._httpClient.get<any>(`${environment.apiUrl}leads/activities`);
+  getActivities(): Observable<ActivityModel[]> {
+    return this._httpClient
+      .get<ApiResponse<ActivityModel[]>>(
+        `${environment.apiUrl}leads/activities`
+      )
+      .pipe(map((resp) => resp.data));
   }
 }

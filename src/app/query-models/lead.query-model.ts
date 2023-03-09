@@ -1,5 +1,7 @@
-export interface LeadsQueryModel {
+export interface LeadQueryModel {
   readonly name: string;
+  readonly websiteLink: string;
+  readonly linkedinLink: string;
   readonly scopes: string[];
   readonly hiring: {
     readonly active: boolean;
