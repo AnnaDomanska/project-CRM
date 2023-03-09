@@ -59,8 +59,8 @@
     <div class="content">
 
 
-      <div class="pb-9">
-        <h2 class="mb-4">2 Companies</h2>
+      <div class="pb-9" *ngIf="leads$ | async as leads">
+        <h2 class="mb-4">{{leads.length}} Companies</h2>
         <div id="dealsTable"
           data-list='{"valueNames":["name","email","phone","contact","company","date"],"page":10,"pagination":true}'>
           <div class="row g-3 justify-content-between mb-4">
@@ -142,8 +142,7 @@
                             </div>
                           </div>
                         </div>
-                        <div
-                          class="modal-footer d-flex justify-content-end align-items-center px-4 pb-4 border-0 pt-3">
+                        <div class="modal-footer d-flex justify-content-end align-items-center px-4 pb-4 border-0 pt-3">
                           <button class="btn btn-sm btn-phoenix-primary px-4 fs--2 my-0" type="submit"> <span
                               class="fas fa-arrows-rotate me-2 fs--2"></span>Reset</button>
                           <button class="btn btn-sm btn-primary px-9 fs--2 my-0" type="submit">Done</button>
@@ -182,16 +181,16 @@
                   </tr>
                 </thead>
                 <tbody class="list" id="deal-tables-body">
-                  <tr class="hover-actions-trigger btn-reveal-trigger position-static">
+                  <tr class="hover-actions-trigger btn-reveal-trigger position-static" *ngFor="let lead of leads">
                     <td class="name align-middle white-space-nowrap">
-                      <td class="d-flex align-items-center">
-                        <div><a class="fs-0 fw-bold" href="#">Google</a>
-                          <div class="d-flex align-items-center justify-content-around">
-                            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                            <a href="#"><i class="fa-solid fa-link"></i></a>
-                          </div>
+                    <td class="d-flex align-items-center">
+                      <div><a class="fs-0 fw-bold" href="#">{{lead.name}}</a>
+                        <div class="d-flex align-items-center justify-content-around">
+                          <a href="{{lead.linkedinLink}}"><i class="fa-brands fa-linkedin"></i></a>
+                          <a href="{{lead.websiteLink}}"><i class="fa-solid fa-link"></i></a>
                         </div>
-                      </td>
+                      </div>
+                    </td>
                     <td class="align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-end">
                       <div><span class="badge badge-phoenix badge-phoenix-warning">Internal Projects</span></div>
                       <div><span class="badge badge-phoenix badge-phoenix-warning">External Projects</span></div>
@@ -202,8 +201,7 @@
                       <div>Juniors: <i class="fa-solid fa-check"></i></div>
                       <div>Talent Program : <i class="fa-solid fa-check"></i></div>
                     </td>
-                    <td
-                      class="company align-middle white-space-nowrap text-600 ps-4 border-end fw-semi-bold text-1000">
+                    <td class="company align-middle white-space-nowrap text-600 ps-4 border-end fw-semi-bold text-1000">
                       MarketTech</td>
                     <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end">Global</td>
                     <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end">
@@ -218,16 +216,16 @@
                     <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end"><span
                         class="badge badge-phoenix badge-phoenix-primary">Investigation</span></td>
                   </tr>
-                  <tr class="hover-actions-trigger btn-reveal-trigger position-static">
+                  <!-- <tr class="hover-actions-trigger btn-reveal-trigger position-static">
                     <td class="name align-middle white-space-nowrap">
-                      <td class="d-flex align-items-center">
-                        <div><a class="fs-0 fw-bold" href="#">Facebook</a>
-                          <div class="d-flex align-items-center justify-content-around">
-                            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                            <a href="#"><i class="fa-solid fa-link"></i></a>
-                          </div>
+                    <td class="d-flex align-items-center">
+                      <div><a class="fs-0 fw-bold" href="#">Facebook</a>
+                        <div class="d-flex align-items-center justify-content-around">
+                          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                          <a href="#"><i class="fa-solid fa-link"></i></a>
                         </div>
-                      </td>
+                      </div>
+                    </td>
                     <td class="align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-end">
                       <div><span class="badge badge-phoenix badge-phoenix-warning">Internal Projects</span></div>
                     </td>
@@ -236,8 +234,7 @@
                       <div>Juniors: <i class="fa-solid fa-xmark"></i></div>
                       <div>Talent Program : <i class="fa-solid fa-xmark"></i></div>
                     </td>
-                    <td
-                      class="company align-middle white-space-nowrap text-600 ps-4 border-end fw-semi-bold text-1000">
+                    <td class="company align-middle white-space-nowrap text-600 ps-4 border-end fw-semi-bold text-1000">
                       MarketTech</td>
                     <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end">Global</td>
                     <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end">
@@ -251,9 +248,10 @@
                     </td>
                     <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end"><span
                         class="badge badge-phoenix badge-phoenix-primary">Investigation</span></td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
+
             </div>
           </div>
         </div>

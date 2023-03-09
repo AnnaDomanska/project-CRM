@@ -15,5 +15,5 @@ export interface LeadModel {
     readonly junior: boolean;
   };
   readonly location: string;
-  readonly websiteLik: string;
+  readonly websiteLink: string;
 }
