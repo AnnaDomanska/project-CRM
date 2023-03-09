@@ -6,9 +6,10 @@ import {
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { UserModel } from '../../models/user.model';
+import { LeadModel } from '../../models/lead.model';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
+import { LeadsService } from '../../services/leads.service';
 
 @Component({
   selector: 'app-leads',
@@ -22,15 +23,18 @@ export class LeadsComponent {
     new BehaviorSubject<boolean>(false);
   public dropdownMenuStatus$: Observable<boolean> =
     this._dropdownMenuStatusSubject.asObservable();
-    
+
   readonly userEmail$: Observable<string> = this._userService
     .getUserData()
     .pipe(map((data) => data.email));
 
+  readonly leads$: Observable<LeadModel[]> = this._leadsService.getLeads();
+
   constructor(
     private _authService: AuthService,
     private _router: Router,
-    private _userService: UserService
+    private _userService: UserService,
+    private _leadsService: LeadsService
   ) {}
 
   showMenu(): void {
