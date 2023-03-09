@@ -9,7 +9,7 @@ export interface LeadModel {
   readonly annualRevenue: number;
   readonly name: string;
   readonly industry: string;
-  readonly hirig: {
+  readonly hiring: {
     readonly talentProgram: boolean;
     readonly active: boolean;
     readonly junior: boolean;

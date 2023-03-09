@@ -200,9 +200,12 @@
                         </ng-container>
                       </td>
                       <td class="align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-end">
-                        <div>Is hiring: <i class="fa-solid fa-check"></i></div>
-                        <div>Juniors: <i class="fa-solid fa-check"></i></div>
-                        <div>Talent Program : <i class="fa-solid fa-xmark"></i>
+                        <div>Is hiring: <i class="fa-solid"
+                            [ngClass]="{'fa-check': lead.hiring.active, 'fa-xmark': !lead.hiring.active}"></i></div>
+                        <div>Juniors: <i class="fa-solid"
+                            [ngClass]="{'fa-check': lead.hiring.junior, 'fa-xmark': !lead.hiring.junior}"></i></div>
+                        <div>Talent Program : <i class="fa-solid"
+                            [ngClass]="{'fa-check': lead.hiring.talentProgram, 'fa-xmark': !lead.hiring.talentProgram}"></i>
                         </div>
                       </td>
                       <td class=" company align-middle white-space-nowrap text-600 ps-4 border-end fw-semi-bold

@@ -66,7 +66,7 @@ export class LeadsComponent {
           : `http://${lead.websiteLink}`,
         linkedinLink: lead.linkedinLink,
         scopes: (lead.activityIds ?? []).map((id) => activitiesMap[id]?.name),
-        hiring: lead.hirig,
+        hiring: lead.hiring,
         industry: lead.industry,
         location: lead.location,
         size: lead.companySize,
