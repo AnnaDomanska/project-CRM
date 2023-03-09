@@ -3,15 +3,15 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { LeadQueryModel } from '../../query-models/lead.query-model';
 import { LeadModel } from '../../models/lead.model';
+import { ActivityModel } from '../../models/activity.model';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { LeadsService } from '../../services/leads.service';
-import { ActivityModel } from 'src/app/models/activity.model';
-import { LeadQueryModel } from 'src/app/query-models/lead.query-model';
 
 @Component({
   selector: 'app-leads',
@@ -37,6 +37,11 @@ export class LeadsComponent {
     map(([leads, activities]: [LeadModel[], ActivityModel[]]) =>
       this._mapToLeadQueryModel(leads, activities)
     )
+  );
+  readonly isAdmin$: Observable<boolean> = this._userService.getUserData().pipe(
+    map((resp) => {
+      return resp.role === 'admin' ? true : false;
+    })
   );
 
   constructor(
