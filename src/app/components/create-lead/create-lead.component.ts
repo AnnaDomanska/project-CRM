@@ -4,6 +4,9 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { ActivityModel } from '../../models/activity.model';
+import { LeadsService } from '../../services/leads.service';
 
 @Component({
   selector: 'app-create-lead',
@@ -13,6 +16,22 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateLeadComponent {
+  readonly activitiesForm: FormGroup = new FormGroup({});
+  readonly activities$: Observable<ActivityModel[]> =
+    this._leadsService.getActivities();
+
+  constructor(private _leadsService: LeadsService) {}
+
+  onCreateLeadFormSubmitted(createLeadForm: FormGroup) {
+    console.log(createLeadForm.value);
+  }
+
+  readonly hiringForm: FormGroup = new FormGroup({
+    active: new FormControl(false),
+    junior: new FormControl(false),
+    talentProgram: new FormControl(false),
+  });
+
   readonly createLeadForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     websiteLink: new FormControl('', [
@@ -30,16 +49,12 @@ export class CreateLeadComponent {
     location: new FormControl('', [Validators.required]),
     industry: new FormControl('', [Validators.required]),
     annualRevenue: new FormControl('', [Validators.required]),
-    activities: new FormControl('', [Validators.required]),
+    activities: this.activitiesForm,
     totalSize: new FormControl('', [Validators.required, Validators.min(0)]),
     devSize: new FormControl('', [Validators.required, Validators.min(0)]),
     feSize: new FormControl('', [Validators.required, Validators.min(0)]),
-    hiring: new FormControl(),
-    status: new FormControl(),
+    hiring: this.hiringForm,
+    status: new FormControl('', [Validators.required]),
     notes: new FormControl(''),
   });
-
-  onCreateLeadFormSubmitted(createLeadForm: FormGroup) {
-    console.log(createLeadForm.value);
-  }
 }

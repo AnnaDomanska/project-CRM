@@ -60,20 +60,16 @@
                 </div>
                 <h4 class="mt-6">Activities</h4>
                 <div class="col-12">
-                    <div class="form-floating" formControlName="activities">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" id="inlineCheckbox1" type="checkbox" value="option1" />
-                            <label class="form-check-label" for="inlineCheckbox1">Internal Project</label>
+                    <form formGroupName="activities">
+                        <div class="form-floating">
+                            <div class="form-check form-check-inline" *ngFor="let activity of activities$ | async">
+                                <input class="form-check-input" id="activity.id" type="checkbox"
+                                    value="activity.name" />
+                                <label class="form-check-label" for="inlineCheckbox1">{{activity.name}}</label>
+                            </div>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" id="inlineCheckbox2" type="checkbox" value="option2" />
-                            <label class="form-check-label" for="inlineCheckbox2">External Project</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" id="inlineCheckbox2" type="checkbox" value="option2" />
-                            <label class="form-check-label" for="inlineCheckbox2">Recruitment Agency</label>
-                        </div>
-                    </div>
+                    </form>
+
                 </div>
                 <h4 class="mt-6">Company Size</h4>
                 <div class="col-sm-6 col-md-4">
@@ -97,34 +93,39 @@
                         <label for="floatingInputFESize">FE Size</label>
                     </div>
                 </div>
-                <h4 class="mt-6">Hiring Information</h4>
-                <div class="col-sm-6 col-md-4" formControlName="hiring">
-                    <div class="form-floating">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" id="flexSwitchCheckDefault" type="checkbox" />
-                            <label class="form-check-label" for="flexSwitchCheckDefault">Is currently
-                                hiring?</label>
+                <ng-container formGroupName="hiring">
+                    <h4 class="mt-6">Hiring Information</h4>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="form-floating">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" id="flexSwitchCheckDefault" type="checkbox"
+                                    formControlName="active" />
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Is currently
+                                    hiring?</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="form-floating">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" id="flexSwitchCheckDefault2" type="checkbox" />
-                            <label class="form-check-label" for="flexSwitchCheckDefault2">Is hiring
-                                junior?</label>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="form-floating">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" id="flexSwitchCheckDefault2" type="checkbox"
+                                    formControlName="junior" />
+                                <label class="form-check-label" for="flexSwitchCheckDefault2">Is hiring
+                                    junior?</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="form-floating">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" id="flexSwitchCheckDefault3" type="checkbox" />
-                            <label class="form-check-label" for="flexSwitchCheckDefault3">Has Talent
-                                program?</label>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="form-floating">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" id="flexSwitchCheckDefault3" type="checkbox"
+                                    formControlName="talentProgram" />
+                                <label class="form-check-label" for="flexSwitchCheckDefault3">Has Talent
+                                    program?</label>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </ng-container>
                 <h4 class="mt-6">Status</h4>
                 <div class="col-12">
                     <select class="form-select form-select-lg mb-3" formControlName="status">
@@ -143,7 +144,7 @@
                     </div>
                 </div>
                 <div class="col-12 d-flex justify-content-end mt-6">
-                    <button class="btn btn-primary">Create lead</button>
+                    <button class="btn btn-primary" [disabled]="!createLeadForm.valid">Create lead</button>
                 </div>
             </form>
         </form>
