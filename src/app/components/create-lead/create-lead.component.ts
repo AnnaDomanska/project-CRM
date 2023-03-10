@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ViewEncapsulation,
 } from '@angular/core';
@@ -11,7 +12,9 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { ActivityModel } from '../../models/activity.model';
 import { LeadsService } from '../../services/leads.service';
 
@@ -50,11 +53,11 @@ export class CreateLeadComponent {
     .getActivities()
     .pipe(tap((data) => this.createActivitiesFormControls(data)));
 
-  constructor(private _leadsService: LeadsService) {}
-
-  onCreateLeadFormSubmitted(createLeadForm: FormGroup) {
-    console.log(createLeadForm.value);
-  }
+  constructor(
+    private _leadsService: LeadsService,
+    private _router: Router,
+    private _cdr: ChangeDetectorRef
+  ) {}
 
   readonly hiringForm: FormGroup = new FormGroup({
     active: new FormControl(false),
@@ -92,5 +95,45 @@ export class CreateLeadComponent {
     activities.forEach((activity) =>
       this.activitiesForm.addControl(activity.id, new FormControl(false))
     );
+  }
+
+  onCreateLeadFormSubmitted(createLeadForm: FormGroup): void {
+    const activityIds = Object.keys(this.activitiesForm.value).reduce(
+      (prev: string[], curr: string) => {
+        if (this.activitiesForm.value[curr]) {
+          return [...prev, curr];
+        }
+        return prev;
+      },
+      []
+    );
+
+    this._leadsService
+      .createLead({
+        name: createLeadForm.value.name,
+        websiteLink: createLeadForm.value.websiteLink,
+        linkedinLink: createLeadForm.value.linkedinLink,
+        location: createLeadForm.value.location,
+        industry: createLeadForm.value.industry,
+        annualRevenue: createLeadForm.value.annualRevenue,
+        activityIds: activityIds,
+        companySize: {
+          total: createLeadForm.value.totalSize,
+          dev: createLeadForm.value.devSize,
+          fe: createLeadForm.value.feSize,
+        },
+        hiring: {
+          active: createLeadForm.value.active,
+          junior: createLeadForm.value.junior,
+          talentProgram: createLeadForm.value.talentProgram,
+        },
+      })
+      .subscribe({
+        next: () => this._router.navigate(['leads']),
+        error: (e) => {
+          this.createLeadForm.setErrors({ beValidator: e.error.message });
+          this._cdr.detectChanges();
+        },
+      });
   }
 }
