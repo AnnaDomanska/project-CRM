@@ -113,6 +113,14 @@
                         <input class="form-control" id="floatingInputTotalSize" type="number" placeholder="Total size"
                             formControlName="totalSize" />
                         <label for="floatingInputTotalSize">Total size</label>
+                        <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('totalSize')?.hasError('required')">
+                        Total size is
+                        required</div>
+                        <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('totalSize')?.hasError('min')">
+                        Minimum value is 1</div>
+                        
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
@@ -120,6 +128,13 @@
                         <input class="form-control" id="floatingInputDevSize" type="number" placeholder="Dev Size"
                             formControlName="devSize" />
                         <label for="floatingInputDevSize">Dev Size</label>
+                        <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('devSize')?.hasError('required')">
+                        Total size is
+                        required</div>
+                        <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('devSize')?.hasError('min')">
+                        Minimum value is 1</div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
@@ -127,6 +142,13 @@
                         <input class="form-control" id="floatingInputFESize" type="number" placeholder="FE Size"
                             formControlName="feSize" />
                         <label for="floatingInputFESize">FE Size</label>
+                        <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('feSize')?.hasError('required')">
+                        Total size is
+                        required</div>
+                        <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('feSize')?.hasError('min')">
+                        Minimum value is 1</div>
                     </div>
                 </div>
                 <ng-container formGroupName="hiring">
@@ -170,6 +192,10 @@
                         <option value="2">Demonstrating Capabilities</option>
                         <option value="3">Obtaining Commitment</option>
                     </select>
+                    <div class="text-danger fs--1"
+                    *ngIf="createLeadForm.touched && createLeadForm.get('status')?.hasError('required')">
+                    Status is
+                    required</div>
                 </div>
                 <h4 class="mt-6">Notes</h4>
                 <div class="col-12">
