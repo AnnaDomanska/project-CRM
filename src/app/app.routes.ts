@@ -19,15 +19,11 @@ import { AppComponent } from './app.component';
 import { CreateLeadComponent } from './components/create-lead/create-lead.component';
 import { AdminGuard } from './guards/admin/admin.guard';
 import { CreateLeadComponentModule } from './components/create-lead/create-lead.component-module';
+import { LeadsRoutesModule } from './leads.routes';
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      {
-        path: '',
-        component: AppComponent,
-        canActivate: [AutoLoginGuard, NotLoggedInGuard],
-      },
       {
         path: 'auth',
         canActivate: [AutoLoginGuard],
@@ -39,19 +35,10 @@ import { CreateLeadComponentModule } from './components/create-lead/create-lead.
         canActivate: [NotLoggedInGuard],
       },
       {
-        path: 'leads',
+        path: '',
         component: LeadsComponent,
         canActivate: [NotLoggedInGuard, VerifyGuard, CompleteProfileGuard],
-      },
-      {
-        path: 'create-lead',
-        component: CreateLeadComponent,
-        canActivate: [
-          NotLoggedInGuard,
-          VerifyGuard,
-          CompleteProfileGuard,
-          AdminGuard,
-        ],
+        loadChildren: () => LeadsRoutesModule,
       },
       {
         path: 'complete-profile',
