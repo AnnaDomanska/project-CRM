@@ -123,16 +123,17 @@ export class CreateLeadComponent {
           fe: createLeadForm.value.feSize,
         },
         hiring: {
-          active: createLeadForm.value.active,
-          junior: createLeadForm.value.junior,
-          talentProgram: createLeadForm.value.talentProgram,
+          active: this.hiringForm.value.active,
+          junior: this.hiringForm.value.junior,
+          talentProgram: this.hiringForm.value.talentProgram,
         },
       })
       .subscribe({
         next: () => this._router.navigate(['leads']),
         error: (e) => {
-          this.createLeadForm.setErrors({ beValidator: e.error.message });
-          this._cdr.detectChanges();
+          // this.createLeadForm.setErrors({ beValidator: e.error.message });
+          // this._cdr.detectChanges();
+          console.log(e);
         },
       });
   }
