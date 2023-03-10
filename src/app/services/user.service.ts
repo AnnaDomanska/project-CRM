@@ -15,7 +15,8 @@ export class UserService {
       shareReplay(1)
     );
 
-  constructor(private _httpClient: HttpClient) {}
+
+  constructor(private _httpClient: HttpClient, private _storage: Storage) {}
 
   getUserData(): Observable<UserModel> {
     return this._user$;
@@ -30,4 +31,6 @@ export class UserService {
       data: { content: bio },
     });
   }
+
+ 
 }

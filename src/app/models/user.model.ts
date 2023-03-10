@@ -1,4 +1,5 @@
 export interface UserModel {
+  readonly role: string
   readonly iss: string;
   readonly aud: string;
   readonly auth_time: number;

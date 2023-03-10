@@ -1,0 +1,216 @@
+<div class="border-bottom mb-7 mx-n3 px-2 mx-lg-n6 px-lg-6">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="d-sm-flex justify-content-between">
+                <h2 class="mb-4">Create a new lead</h2>
+                <div class="d-flex mb-3">
+                    <button class="btn btn-phoenix-primary me-2 px-6" [routerLink]="'/leads'">Cancel</button>
+                    <button class="btn btn-primary" (click)="onCreateLeadFormSubmitted(createLeadForm)" [disabled]="!createLeadForm.valid">Create
+                        lead</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12">
+
+        <h4 class="mb-3">Lead Information </h4>
+        <form class="row g-3 mb-9" [formGroup]="createLeadForm">
+            <div class="col-sm-6 col-md-4">
+                <div class="form-floating">
+                    <input class="form-control" id="floatingInputCompanyname" type="text" placeholder="Company name"
+                        formControlName="name" />
+                    <label for="floatingInputCompanyname">Company name</label>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('name')?.hasError('required')">
+                        Company name is
+                        required</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-floating">
+                    <input class="form-control" id="floatingInputWebsitelink" type="text" placeholder="Website link"
+                        formControlName="websiteLink" />
+                    <label for="floatingInputWebsitelink">Website link</label>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('websiteLink')?.hasError('required')">
+                        Website link is
+                        required</div>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('websiteLink')?.hasError('pattern')">
+                        You should type a valid website link (try to add 'https:// before)'</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-floating">
+                    <input class="form-control" id="floatingInputLinkedin" type="text" placeholder="Linkedin link"
+                        formControlName="linkedinLink" />
+                    <label for="floatingInputLinkedin">Linkedin link</label>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('linkedinLink')?.hasError('required')">
+                        Linkedin link is
+                        required</div>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('linkedinLink')?.hasError('pattern')">
+                        You should type a valid website link (try to add 'https:// before)'</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-floating">
+                    <input class="form-control" id="floatingInputLocation" type="text" placeholder="Location"
+                        formControlName="location" />
+                    <label for="floatingInputLocation">Location</label>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('location')?.hasError('required')">
+                        Location is
+                        required</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-floating">
+                    <input class="form-control" id="floatingInputIndustry" type="text" placeholder="Industry"
+                        formControlName="industry" />
+                    <label for="floatingInputIndustry">Industry</label>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('industry')?.hasError('required')">
+                        Industry is
+                        required</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-floating">
+                    <input class="form-control" id="floatingInputRevenue" type="number" placeholder="revenue"
+                        formControlName="annualRevenue" />
+                    <label for="floatingInputRevenue">Annual revenue </label>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('annualRevenue')?.hasError('required')">
+                        Revenue is
+                        required</div>
+                </div>
+            </div>
+            <h4 class="mt-6">Activities</h4>
+            <div class="col-12">
+                <form formGroupName="activities">
+                    <div class="form-floating">
+                        <div class="form-check form-check-inline" *ngFor="let activity of activities$ | async">
+                            <input class="form-check-input" [id]="activity.id" type="checkbox" [value]="activity.id"
+                                formControlName="{{activity.id}}" />
+                            <label class="form-check-label" for="inlineCheckbox1">{{activity.name}}</label>
+
+                        </div>
+                        <div class="text-danger fs--1"
+                            *ngIf="createLeadForm.touched && activitiesForm.hasError('minOneChecked')">
+                            You should checked at least one activity.</div>
+                    </div>
+                </form>
+
+            </div>
+            <h4 class="mt-6">Company Size</h4>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-floating">
+                    <input class="form-control" id="floatingInputTotalSize" type="number" placeholder="Total size"
+                        formControlName="totalSize" />
+                    <label for="floatingInputTotalSize">Total size</label>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('totalSize')?.hasError('required')">
+                        Total size is
+                        required</div>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('totalSize')?.hasError('min')">
+                        Minimum value is 1</div>
+
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-floating">
+                    <input class="form-control" id="floatingInputDevSize" type="number" placeholder="Dev Size"
+                        formControlName="devSize" />
+                    <label for="floatingInputDevSize">Dev Size</label>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('devSize')?.hasError('required')">
+                        Total size is
+                        required</div>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('devSize')?.hasError('min')">
+                        Minimum value is 1</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-floating">
+                    <input class="form-control" id="floatingInputFESize" type="number" placeholder="FE Size"
+                        formControlName="feSize" />
+                    <label for="floatingInputFESize">FE Size</label>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('feSize')?.hasError('required')">
+                        Total size is
+                        required</div>
+                    <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('feSize')?.hasError('min')">
+                        Minimum value is 1</div>
+                </div>
+            </div>
+            <ng-container formGroupName="hiring">
+                <h4 class="mt-6">Hiring Information</h4>
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-floating">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" id="flexSwitchCheckDefault" type="checkbox"
+                                formControlName="active" />
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Is currently
+                                hiring?</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-floating">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" id="flexSwitchCheckDefault2" type="checkbox"
+                                formControlName="junior" />
+                            <label class="form-check-label" for="flexSwitchCheckDefault2">Is hiring
+                                junior?</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-floating">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" id="flexSwitchCheckDefault3" type="checkbox"
+                                formControlName="talentProgram" />
+                            <label class="form-check-label" for="flexSwitchCheckDefault3">Has Talent
+                                program?</label>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <h4 class="mt-6">Status</h4>
+            <div class="col-12">
+                <select class="form-select form-select-lg mb-3" formControlName="status">
+                    <option selected="">Preliminaries</option>
+                    <option value="1">Investigation</option>
+                    <option value="2">Demonstrating Capabilities</option>
+                    <option value="3">Obtaining Commitment</option>
+                </select>
+                <div class="text-danger fs--1"
+                    *ngIf="createLeadForm.touched && createLeadForm.get('status')?.hasError('required')">
+                    Status is
+                    required</div>
+            </div>
+            <h4 class="mt-6">Notes</h4>
+            <div class="col-12">
+                <div class="form-floating">
+                    <textarea class="form-control" id="floatingProjectOverview" placeholder="Leave a comment here"
+                        style="height: 128px" formControlName="notes"></textarea>
+                    <label for="floatingProjectOverview">Lead description</label>
+                </div>
+            </div>
+            <div class="text-danger fs--1" *ngIf=" createLeadForm.hasError('beValidator')">
+                {{createLeadForm.getError('beValidator')}}</div>
+            <div class="col-12 d-flex justify-content-end mt-6">
+                <button class="btn btn-primary" (click)="onCreateLeadFormSubmitted(createLeadForm)"
+                    [disabled]="!createLeadForm.valid">Create
+                    lead</button>
+            </div>
+        </form>
+    </div>
+</div>

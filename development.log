@@ -1183,3 +1183,64 @@
 	"level": "info",
 	"message": "[CLI] Called Query rxjs/properties/data/flow"
 }
+[info] [CommandBus]: Dispatching command CreateDataPropertyCommand: {
+	"commandName": "CreateDataPropertyCommand",
+	"payload": {
+		"entityFilePath": "d:/PROJEKTY/project-CRM/src/app/components/leads/leads.component.ts",
+		"entityPropertyName": "userEmail",
+		"dependencyFilePath": "d:/PROJEKTY/project-CRM/src/app/services/user.service.ts",
+		"dependencyName": "UserService",
+		"dependencyCallPath": [
+			"getUserData"
+		]
+	},
+	"level": "info",
+	"message": "[CommandBus]: Dispatching command CreateDataPropertyCommand"
+}
+[info] [CLI] Calling Command rxjs/properties/data/create: {
+	"funcParams": {
+		"propertyName": "userEmail",
+		"dependencyCallPath": [
+			"getUserData"
+		],
+		"dependencyName": "UserService",
+		"dependencyPath": "d:/PROJEKTY/project-CRM/src/app/services/user.service.ts"
+	},
+	"level": "info",
+	"message": "[CLI] Calling Command rxjs/properties/data/create"
+}
+[info] [EventBus]: Broadcasting event ServiceDependencyInjected: {
+	"type": "ServiceDependencyInjected",
+	"payload": {
+		"entityFilePath": "d:/PROJEKTY/project-CRM/src/app/components/leads/leads.component.ts",
+		"injectingFilePath": "d:/PROJEKTY/project-CRM/src/app/services/user.service.ts"
+	},
+	"level": "info",
+	"message": "[EventBus]: Broadcasting event ServiceDependencyInjected"
+}
+[info] [EventBus]: Broadcasted ServiceDependencyInjected: {
+	"event": {
+		"entityFilePath": "d:/PROJEKTY/project-CRM/src/app/components/leads/leads.component.ts",
+		"injectingFilePath": "d:/PROJEKTY/project-CRM/src/app/services/user.service.ts"
+	},
+	"level": "info",
+	"message": "[EventBus]: Broadcasted ServiceDependencyInjected"
+}
+[info] [CommandBus]: Handled  CreateDataPropertyCommand: {
+	"commandName": "CreateDataPropertyCommand",
+	"payload": {
+		"entityFilePath": "d:/PROJEKTY/project-CRM/src/app/components/leads/leads.component.ts",
+		"entityPropertyName": "userEmail",
+		"dependencyFilePath": "d:/PROJEKTY/project-CRM/src/app/services/user.service.ts",
+		"dependencyName": "UserService",
+		"dependencyCallPath": [
+			"getUserData"
+		]
+	},
+	"level": "info",
+	"message": "[CommandBus]: Handled  CreateDataPropertyCommand"
+}
+[info] [CLI] Called Command rxjs/properties/data/create: {
+	"message": "[CLI] Called Command rxjs/properties/data/create",
+	"level": "info"
+}
