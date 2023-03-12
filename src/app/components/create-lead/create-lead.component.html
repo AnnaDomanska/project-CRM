@@ -5,7 +5,8 @@
                 <h2 class="mb-4">Create a new lead</h2>
                 <div class="d-flex mb-3">
                     <button class="btn btn-phoenix-primary me-2 px-6" [routerLink]="'/leads'">Cancel</button>
-                    <button class="btn btn-primary" (click)="onCreateLeadFormSubmitted(createLeadForm)" [disabled]="!createLeadForm.valid">Create
+                    <button class="btn btn-primary" (click)="onCreateLeadFormSubmitted(createLeadForm)"
+                        [disabled]="!createLeadForm.valid">Create
                         lead</button>
                 </div>
             </div>
@@ -53,7 +54,7 @@
                         required</div>
                     <div class="text-danger fs--1"
                         *ngIf="createLeadForm.touched && createLeadForm.get('linkedinLink')?.hasError('pattern')">
-                        You should type a valid website link (try to add 'https:// before)'</div>
+                        You should type a valid linkedin link'</div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4">

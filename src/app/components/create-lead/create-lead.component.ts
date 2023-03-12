@@ -76,7 +76,7 @@ export class CreateLeadComponent {
     linkedinLink: new FormControl('', [
       Validators.required,
       Validators.pattern(
-        /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/
+        /^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile|company)/
       ),
     ]),
     location: new FormControl('', [Validators.required]),
