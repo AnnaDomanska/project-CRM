@@ -1,22 +1,24 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, combineLatest, map } from 'rxjs';
-import { ActivityModel } from 'src/app/models/activity.model';
-import { LeadModel } from 'src/app/models/lead.model';
-import { LeadQueryModel } from 'src/app/query-models/lead.query-model';
-import { AuthService } from 'src/app/services/auth.service';
-import { LeadsService } from 'src/app/services/leads.service';
-import { UserService } from 'src/app/services/user.service';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
+import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { LeadQueryModel } from '../../query-models/lead.query-model';
+import { LeadModel } from '../../models/lead.model';
+import { ActivityModel } from '../../models/activity.model';
+import { UserService } from '../../services/user.service';
+import { LeadsService } from '../../services/leads.service';
 
 @Component({
   selector: 'app-leads-table',
   styleUrls: ['./leads-table.component.scss'],
   templateUrl: './leads-table.component.html',
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeadsTableComponent {
-  
   readonly leads$: Observable<LeadQueryModel[]> = combineLatest([
     this._leadsService.getLeads(),
     this._leadsService.getActivities(),
@@ -30,6 +32,10 @@ export class LeadsTableComponent {
       return resp.role === 'admin' ? true : false;
     })
   );
+  private _filterModalStatusSubject: BehaviorSubject<boolean> =
+    new BehaviorSubject<boolean>(false);
+  public filterModalStatus$: Observable<boolean> =
+    this._filterModalStatusSubject.asObservable();
 
   constructor(
     private _userService: UserService,
@@ -63,5 +69,13 @@ export class LeadsTableComponent {
         revenue: lead.annualRevenue,
       };
     });
+  }
+
+  showFilterModal(): void {
+    this._filterModalStatusSubject.next(true);
+  }
+
+  hideFilterModal(): void {
+    this._filterModalStatusSubject.next(false);
   }
 }
