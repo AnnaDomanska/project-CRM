@@ -28,7 +28,9 @@ export class CompleteProfileGuard implements CanActivate {
       }),
       map((resp) => {
         return resp === 'error'
-          ? this._router.parseUrl('complete-profile')
+          ? this._router.parseUrl(
+              route.data['redirectUrlCompleteProfile'] || 'complete-profile'
+            )
           : true;
       })
     );

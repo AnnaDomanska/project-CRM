@@ -23,7 +23,9 @@ export class AutoLoginGuard implements CanActivate {
         return of('error');
       }),
       map((resp) => {
-        return resp !== 'error' ? this._router.parseUrl('leads') : true;
+        return resp !== 'error'
+          ? this._router.parseUrl(route.data['redirectUrlLeads'] || 'leads')
+          : true;
       })
     );
   }

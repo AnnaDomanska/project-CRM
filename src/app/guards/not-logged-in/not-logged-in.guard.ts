@@ -23,7 +23,11 @@ export class NotLoggedInGuard implements CanActivate {
         return of('error');
       }),
       map((resp) => {
-        return resp === 'error' ? this._router.parseUrl('auth/login') : true;
+        return resp === 'error'
+          ? this._router.parseUrl(
+              route.data['redirectUrlLogin'] || 'auth/login'
+            )
+          : true;
       })
     );
   }
