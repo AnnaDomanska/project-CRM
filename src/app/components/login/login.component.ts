@@ -32,6 +32,9 @@ export class LoginComponent {
   ) {}
 
   onLoginFormSubmitted(loginForm: FormGroup): void {
+    if (!loginForm.valid) {
+      return alert('You should complete the entire form!');
+    }
     this._authService
       .login(
         {

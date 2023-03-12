@@ -107,7 +107,9 @@ export class CreateLeadComponent {
       },
       []
     );
-
+    if (!createLeadForm.valid) {
+      return alert('You should complete the entire form!');
+    }
     this._leadsService
       .createLead({
         name: createLeadForm.value.name,

@@ -108,6 +108,9 @@ export class RegisterComponent {
   ) {}
 
   onRegisterFormSubmitted(registerForm: FormGroup): void {
+    if (!registerForm.valid) {
+      return alert('You should complete the entire form!');
+    }
     this._authService
       .register({
         email: registerForm.value.email,
@@ -116,10 +119,13 @@ export class RegisterComponent {
       .pipe(
         take(1),
         switchMap(() =>
-          this._authService.login({
-            email: registerForm.value.email,
-            password: registerForm.value.password,
-          }, false)
+          this._authService.login(
+            {
+              email: registerForm.value.email,
+              password: registerForm.value.password,
+            },
+            false
+          )
         )
       )
       .subscribe({
