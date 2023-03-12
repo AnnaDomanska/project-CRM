@@ -3,6 +3,7 @@ export interface LeadQueryModel {
   readonly websiteLink: string;
   readonly linkedinLink: string;
   readonly scopes: string[];
+  readonly scopesIds: string[];
   readonly hiring: {
     readonly active: boolean;
     readonly junior: boolean;
