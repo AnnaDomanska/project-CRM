@@ -12,6 +12,7 @@ import { ActivityModel } from '../../models/activity.model';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { LeadsService } from '../../services/leads.service';
+import { UIService } from 'src/app/services/UI.service';
 
 @Component({
   selector: 'app-leads',
@@ -21,39 +22,27 @@ import { LeadsService } from '../../services/leads.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeadsComponent {
-  private _dropdownMenuStatusSubject: BehaviorSubject<boolean> =
-    new BehaviorSubject<boolean>(false);
-  public dropdownMenuStatus$: Observable<boolean> =
-    this._dropdownMenuStatusSubject.asObservable();
+  readonly dropdownMenuStatus$: Observable<boolean> =
+    this._UIService.dropdownMenuStatus$;
 
   readonly userEmail$: Observable<string> = this._userService
     .getUserData()
     .pipe(map((data) => data.email));
 
-
-
   constructor(
     private _authService: AuthService,
     private _router: Router,
     private _userService: UserService,
-
+    private _UIService: UIService
   ) {}
 
-  
-
   showMenu(): void {
-    this.dropdownMenuStatus$
-      .pipe(
-        take(1),
-        map((actualStatus) =>
-          this._dropdownMenuStatusSubject.next(!actualStatus)
-        )
-      )
-      .subscribe();
+    this._UIService.showMenu();
   }
 
   logout(): void {
     this._authService.logout();
     this._router.navigate(['logged-out']);
+    this._UIService.clearData();
   }
 }

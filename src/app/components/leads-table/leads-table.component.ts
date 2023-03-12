@@ -13,6 +13,7 @@ import { UserService } from '../../services/user.service';
 import { LeadsService } from '../../services/leads.service';
 import { CompanySizeOptionQueryModel } from 'src/app/query-models/company-size-option.query-model';
 import { FilterValuesQueryModel } from 'src/app/query-models/filter-values.query-model';
+import { UIService } from 'src/app/services/UI.service';
 
 @Component({
   selector: 'app-leads-table',
@@ -44,10 +45,8 @@ export class LeadsTableComponent {
     { name: '1001', min: 1001, max: null },
   ]).pipe(tap((data) => this.createSizeFormControls(data)));
 
-  private _filterModalStatusSubject: BehaviorSubject<boolean> =
-    new BehaviorSubject<boolean>(false);
-  public filterModalStatus$: Observable<boolean> =
-    this._filterModalStatusSubject.asObservable();
+  readonly filterModalStatus$: Observable<boolean> =
+    this._UIService.filterModalStatus$;
 
   readonly sizeFilterForm: FormGroup = new FormGroup({});
   readonly scopeFilterForm: FormGroup = new FormGroup({});
@@ -62,7 +61,8 @@ export class LeadsTableComponent {
 
   constructor(
     private _userService: UserService,
-    private _leadsService: LeadsService
+    private _leadsService: LeadsService,
+    private _UIService: UIService
   ) {}
 
   private _mapToLeadQueryModel(
@@ -163,17 +163,17 @@ export class LeadsTableComponent {
         );
     })
   );
-  
+
   resetFilterForm(): void {
     this.filterForm.reset();
   }
 
   showFilterModal(): void {
-    this._filterModalStatusSubject.next(true);
+    this._UIService.showFilterModal();
   }
 
   hideFilterModal(): void {
-    this._filterModalStatusSubject.next(false);
+    this._UIService.hideFilterModal();
   }
 
   createActivitiesFormControls(activities: ActivityModel[]): void {

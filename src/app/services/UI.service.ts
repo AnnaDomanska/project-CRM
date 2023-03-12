@@ -32,7 +32,7 @@ export class UIService {
     this._filterModalStatusSubject.next(false);
   }
 
-  resetUISettings(): void {
+  clearData(): void {
     this._filterModalStatusSubject.next(false);
     this._dropdownMenuStatusSubject.next(false);
   }
