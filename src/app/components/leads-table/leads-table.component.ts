@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable, combineLatest, of, tap } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { map, shareReplay, startWith } from 'rxjs/operators';
 import { LeadQueryModel } from '../../query-models/lead.query-model';
 import { LeadModel } from '../../models/lead.model';
 import { ActivityModel } from '../../models/activity.model';
@@ -23,13 +23,21 @@ import { UIService } from 'src/app/services/UI.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeadsTableComponent {
+  readonly activities$: Observable<ActivityModel[]> = this._leadsService
+    .getActivities()
+    .pipe(
+      tap((data) => this.createActivitiesFormControls(data)),
+      shareReplay(1)
+    );
+
   readonly leads$: Observable<LeadQueryModel[]> = combineLatest([
     this._leadsService.getLeads(),
-    this._leadsService.getActivities(),
+    this.activities$,
   ]).pipe(
     map(([leads, activities]: [LeadModel[], ActivityModel[]]) =>
       this._mapToLeadQueryModel(leads, activities)
-    )
+    ),
+    shareReplay(1)
   );
   readonly isAdmin$: Observable<boolean> = this._userService.getUserData().pipe(
     map((resp) => {
@@ -55,9 +63,6 @@ export class LeadsTableComponent {
     sizeFilter: this.sizeFilterForm,
     scopeFilter: this.scopeFilterForm,
   });
-  readonly activities$: Observable<ActivityModel[]> = this._leadsService
-    .getActivities()
-    .pipe(tap((data) => this.createActivitiesFormControls(data)));
 
   constructor(
     private _userService: UserService,
