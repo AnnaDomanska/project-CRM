@@ -25,8 +25,8 @@ export class LeadsService {
       .pipe(map((resp) => resp.data));
   }
 
-  createLead(leadData: LeadModel): Observable<any> {
-    return this._httpClient.post<any>(`${environment.apiUrl}leads`, {
+  createLead(leadData: LeadModel): Observable<void> {
+    return this._httpClient.post<void>(`${environment.apiUrl}leads`, {
       data: leadData,
     });
   }

@@ -146,10 +146,7 @@ export class CreateLeadComponent {
         },
       })
       .subscribe({
-        next: (resp) => {
-          console.log(resp);
-          this._router.navigate(['leads']);
-        },
+        next: () => this._router.navigate(['leads']),
         error: (e) => {
           this.createLeadForm.setErrors({ beValidator: e.message });
           this._cdr.detectChanges();
