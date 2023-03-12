@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { catchError, Observable, switchMap, take, throwError } from 'rxjs';
-import { AuthService } from './services/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class RefreshInterceptor implements HttpInterceptor {

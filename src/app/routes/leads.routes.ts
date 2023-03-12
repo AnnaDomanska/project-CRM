@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CreateLeadComponent } from './components/create-lead/create-lead.component';
-import { CreateLeadComponentModule } from './components/create-lead/create-lead.component-module';
-import { LeadsTableComponent } from './components/leads-table/leads-table.component';
-import { LeadsTableComponentModule } from './components/leads-table/leads-table.component-module';
-import { RegisterComponent } from './components/register/register.component';
-import { AdminGuard } from './guards/admin/admin.guard';
+import { CreateLeadComponent } from '../components/create-lead/create-lead.component';
+import { CreateLeadComponentModule } from '../components/create-lead/create-lead.component-module';
+import { LeadsTableComponent } from '../components/leads-table/leads-table.component';
+import { LeadsTableComponentModule } from '../components/leads-table/leads-table.component-module';
+import { AdminGuard } from '../guards/admin/admin.guard';
+
 
 @NgModule({
   imports: [
