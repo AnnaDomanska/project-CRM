@@ -163,6 +163,10 @@ export class LeadsTableComponent {
         );
     })
   );
+  
+  resetFilterForm(): void {
+    this.filterForm.reset();
+  }
 
   showFilterModal(): void {
     this._filterModalStatusSubject.next(true);
