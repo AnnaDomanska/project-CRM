@@ -26,9 +26,8 @@ export class LeadsService {
   }
 
   createLead(leadData: LeadModel): Observable<any> {
-    return this._httpClient.post<any>(
-      `https://us-central1-courses-auth.cloudfunctions.net/leads`,
-      { data: leadData }
-    );
+    return this._httpClient.post<any>(`${environment.apiUrl}leads`, {
+      data: leadData,
+    });
   }
 }
