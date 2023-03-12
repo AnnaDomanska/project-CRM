@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { CredentialsModel } from '../models/credentials.model';
 import { CredentialsResponse } from '../responses/credentials.response';
@@ -66,5 +66,23 @@ export class AuthService {
   removeUserFromStorage(): void {
     this._storage.removeItem('accessToken');
     this._storage.removeItem('refreshToken');
+  }
+
+  refreshToken(): Observable<any> {
+    const refreshToken = this._storage.getItem('refreshToken');
+    if (refreshToken) {
+      return this._httpClient
+        .post<ApiResponse<CredentialsResponse>>(
+          `${environment.apiUrl}auth/refresh`,
+          { data: { refreshToken } }
+        )
+        .pipe(
+          map((resp) => resp.data),
+          tap((data) => {
+            this.setUserToStorage(data);
+          })
+        );
+    }
+    return of([]);
   }
 }
