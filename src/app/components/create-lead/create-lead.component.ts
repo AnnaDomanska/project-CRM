@@ -86,9 +86,21 @@ export class CreateLeadComponent {
       // Validators.pattern(/^[0-9]*$/),
     ]),
     activities: this.activitiesForm,
-    totalSize: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern(/^[0-9]*$/)]),
-    devSize: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern(/^[0-9]*$/)]),
-    feSize: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern(/^[0-9]*$/)]),
+    totalSize: new FormControl('', [
+      Validators.required,
+      Validators.min(1),
+      Validators.pattern(/^[0-9]*$/),
+    ]),
+    devSize: new FormControl('', [
+      Validators.required,
+      Validators.min(1),
+      Validators.pattern(/^[0-9]*$/),
+    ]),
+    feSize: new FormControl('', [
+      Validators.required,
+      Validators.min(1),
+      Validators.pattern(/^[0-9]*$/),
+    ]),
     hiring: this.hiringForm,
     status: new FormControl('', [Validators.required]),
     notes: new FormControl(''),
@@ -134,7 +146,10 @@ export class CreateLeadComponent {
         },
       })
       .subscribe({
-        next: () => this._router.navigate(['leads']),
+        next: (resp) => {
+          console.log(resp);
+          this._router.navigate(['leads']);
+        },
         error: (e) => {
           this.createLeadForm.setErrors({ beValidator: e.message });
           this._cdr.detectChanges();
