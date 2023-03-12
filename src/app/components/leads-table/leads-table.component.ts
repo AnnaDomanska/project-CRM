@@ -144,13 +144,23 @@ export class LeadsTableComponent {
     this.currentFilterValues$,
   ]).pipe(
     map(([leads, currenFilterValues]) => {
-      return leads.filter((lead) =>
-        currenFilterValues.scopes.size !== 0
-          ? lead.scopesIds.find((scopeId: string) =>
-              currenFilterValues.scopes.has(scopeId)
-            )
-          : true
-      );
+      return leads
+        .filter((lead) =>
+          currenFilterValues.scopes.size !== 0
+            ? lead.scopesIds.find((scopeId: string) =>
+                currenFilterValues.scopes.has(scopeId)
+              )
+            : true
+        )
+        .filter((lead) =>
+          currenFilterValues.sizes.length !== 0
+            ? currenFilterValues.sizes.find(
+                (size) =>
+                  lead.size.total >= size.min &&
+                  (size.max ? lead.size.total <= size.max : true)
+              )
+            : true
+        );
     })
   );
 
