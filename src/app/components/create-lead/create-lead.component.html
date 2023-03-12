@@ -87,7 +87,10 @@
                     <div class="text-danger fs--1"
                         *ngIf="createLeadForm.touched && createLeadForm.get('annualRevenue')?.hasError('required')">
                         Revenue is
-                        required</div>
+                        required and must be a number</div>
+                        <div class="text-danger fs--1"
+                        *ngIf="createLeadForm.touched && createLeadForm.get('annualRevenue')?.hasError('pattern')">
+                        Revenue must be a number</div>
                 </div>
             </div>
             <h4 class="mt-6">Activities</h4>
@@ -116,7 +119,7 @@
                     <div class="text-danger fs--1"
                         *ngIf="createLeadForm.touched && createLeadForm.get('totalSize')?.hasError('required')">
                         Total size is
-                        required</div>
+                        required and must be a number</div>
                     <div class="text-danger fs--1"
                         *ngIf="createLeadForm.touched && createLeadForm.get('totalSize')?.hasError('min')">
                         Minimum value is 1</div>
@@ -131,7 +134,7 @@
                     <div class="text-danger fs--1"
                         *ngIf="createLeadForm.touched && createLeadForm.get('devSize')?.hasError('required')">
                         Total size is
-                        required</div>
+                        required and must be a number</div>
                     <div class="text-danger fs--1"
                         *ngIf="createLeadForm.touched && createLeadForm.get('devSize')?.hasError('min')">
                         Minimum value is 1</div>
@@ -145,7 +148,7 @@
                     <div class="text-danger fs--1"
                         *ngIf="createLeadForm.touched && createLeadForm.get('feSize')?.hasError('required')">
                         Total size is
-                        required</div>
+                        required and must be a number</div>
                     <div class="text-danger fs--1"
                         *ngIf="createLeadForm.touched && createLeadForm.get('feSize')?.hasError('min')">
                         Minimum value is 1</div>

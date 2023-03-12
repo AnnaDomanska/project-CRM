@@ -83,7 +83,7 @@ export class CreateLeadComponent {
     industry: new FormControl('', [Validators.required]),
     annualRevenue: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^[0-9]*$/),
+      // Validators.pattern(/^[0-9]*$/),
     ]),
     activities: this.activitiesForm,
     totalSize: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern(/^[0-9]*$/)]),
