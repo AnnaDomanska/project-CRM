@@ -12,6 +12,8 @@
             </div>
           </div>
         </div>
+
+
         <div class="col-auto">
           <div class="d-flex">
             <button class="btn px-3 btn-phoenix-secondary" type="button" data-bs-toggle="modal"
@@ -21,50 +23,35 @@
             <div class="modal fade " id="filterModal" tabindex="-1"
               [ngClass]="{show: filterModalStatus$ | async, showModal: filterModalStatus$ | async}">
               <div class="modal-dialog modal-dialog-centered">
+
+
                 <div class="modal-content border">
-                  <form id="addEventForm" autocomplete="off">
+                  <form id="addEventForm" autocomplete="off" [formGroup]="filterForm">
                     <div class="modal-header border-200 p-4">
                       <h5 class="modal-title text-1000 fs-2 lh-sm">Filter</h5>
                       <button class="btn p-1 text-900" type="button" data-bs-dismiss="modal" aria-label="Close"
                         (click)="hideFilterModal()"><span class="fas fa-times fs--1"> </span></button>
                     </div>
                     <div class="modal-body pt-4 pb-2 px-4">
-                      <div class="mb-3">
+
+                      <div class="mb-3" formGroupName="scopeFilter">
+
                         <label class="fw-bold mb-2 text-1000" for="createDate">Scope</label>
-                        <div class="form-check">
-                          <input class="form-check-input" id="flexCheckDefault" type="checkbox" value="" />
-                          <label class="form-check-label" for="flexCheckDefault">Internal Project</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value=""  />
-                          <label class="form-check-label" for="flexCheckChecked">External Project</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" />
-                          <label class="form-check-label" for="flexCheckChecked">Recruitment Agency</label>
+
+                        <div class="form-check" *ngFor="let activity of activities$ | async">
+
+                          <input class="form-check-input" [id]="activity.id" type="checkbox" [value]="activity.id"
+                            [formControlName]="activity.id" />
+                          <label class="form-check-label" for="{{activity.id}}">{{activity.name}}</label>
                         </div>
                       </div>
-                      <div class="mb-3">
+
+                      <div class="mb-3" formGroupName="sizeFilter">
                         <label class="fw-bold mb-2 text-1000" for="createDate">Size</label>
-                        <div class="form-check">
-                          <input class="form-check-input" id="flexCheckDefault" type="checkbox" value="" />
-                          <label class="form-check-label" for="flexCheckDefault">0-50</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value=""  />
-                          <label class="form-check-label" for="flexCheckChecked">51-100</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value=""  />
-                          <label class="form-check-label" for="flexCheckChecked">101-500</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" />
-                          <label class="form-check-label" for="flexCheckChecked">501-1000</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" />
-                          <label class="form-check-label" for="flexCheckChecked">1001+</label>
+                        <div class="form-check" *ngFor="let sizeOption of companySizeList$ | async">
+                          <input class="form-check-input" [id]="sizeOption.name" type="checkbox"
+                            [value]="sizeOption.name" [formControlName]="sizeOption.name" />
+                          <label class="form-check-label" for="{{sizeOption.name}}">{{sizeOption.name}}</label>
                         </div>
                       </div>
                     </div>
