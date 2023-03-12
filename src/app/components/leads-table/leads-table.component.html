@@ -30,27 +30,17 @@
                     </div>
                     <div class="modal-body pt-4 pb-2 px-4">
                       <div class="mb-3">
-                        <label class="fw-bold mb-2 text-1000" for="leadStatus">Sales Stage</label>
-                        <select class="form-select" id="leadStatus">
-                          <option value="newLead" selected="selected">Preliminaries</option>
-                          <option value="coldLead">Investigation</option>
-                          <option value="canceled">Demonstrating Capabilities</option>
-                          <option value="wonLead">Obtaining Commitment</option>
-                          <option value="wonLead">No Match</option>
-                        </select>
-                      </div>
-                      <div class="mb-3">
                         <label class="fw-bold mb-2 text-1000" for="createDate">Scope</label>
                         <div class="form-check">
                           <input class="form-check-input" id="flexCheckDefault" type="checkbox" value="" />
                           <label class="form-check-label" for="flexCheckDefault">Internal Project</label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" checked="" />
+                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value=""  />
                           <label class="form-check-label" for="flexCheckChecked">External Project</label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" checked="" />
+                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" />
                           <label class="form-check-label" for="flexCheckChecked">Recruitment Agency</label>
                         </div>
                       </div>
@@ -61,19 +51,19 @@
                           <label class="form-check-label" for="flexCheckDefault">0-50</label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" checked="" />
+                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value=""  />
                           <label class="form-check-label" for="flexCheckChecked">51-100</label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" checked="" />
+                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value=""  />
                           <label class="form-check-label" for="flexCheckChecked">101-500</label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" checked="" />
+                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" />
                           <label class="form-check-label" for="flexCheckChecked">501-1000</label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" checked="" />
+                          <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" />
                           <label class="form-check-label" for="flexCheckChecked">1001+</label>
                         </div>
                       </div>
@@ -111,8 +101,6 @@
                 <th class="sort align-middle ps-4 pe-5 text-uppercase  border-end" scope="col">Size
                 </th>
                 <th class="sort align-middle ps-4 pe-5 text-uppercase  border-end" scope="col">Revenue
-                </th>
-                <th class="sort align-middle ps-4 pe-5 text-uppercase  border-end" scope="col">Sales stage
                 </th>
               </tr>
             </thead>
@@ -158,8 +146,6 @@
                   <div>Total: {{lead.revenue}}</div>
 
                 </td>
-                <td class="date align-middle white-space-nowrap text-600 ps-4 text-700 border-end"><span
-                    class="badge badge-phoenix badge-phoenix-primary">Investigation</span></td>
               </tr>
             </tbody>
           </table>
