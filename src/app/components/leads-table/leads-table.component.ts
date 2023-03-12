@@ -5,13 +5,14 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable, combineLatest, of, tap } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { LeadQueryModel } from '../../query-models/lead.query-model';
 import { LeadModel } from '../../models/lead.model';
 import { ActivityModel } from '../../models/activity.model';
 import { UserService } from '../../services/user.service';
 import { LeadsService } from '../../services/leads.service';
 import { CompanySizeOptionQueryModel } from 'src/app/query-models/company-size-option.query-model';
+import { FilterValuesQueryModel } from 'src/app/query-models/filter-values.query-model';
 
 @Component({
   selector: 'app-leads-table',
@@ -63,7 +64,7 @@ export class LeadsTableComponent {
     private _userService: UserService,
     private _leadsService: LeadsService
   ) {}
-  
+
   private _mapToLeadQueryModel(
     leads: LeadModel[],
     activities: ActivityModel[]
@@ -84,6 +85,7 @@ export class LeadsTableComponent {
           : `http://${lead.websiteLink}`,
         linkedinLink: lead.linkedinLink === 'string' ? '' : lead.linkedinLink,
         scopes: (lead.activityIds ?? []).map((id) => activitiesMap[id]?.name),
+        scopesIds: lead.activityIds,
         hiring: lead.hiring,
         industry: lead.industry === 'string' ? '' : lead.industry,
         location: lead.location === 'string' ? '' : lead.location,
@@ -93,9 +95,65 @@ export class LeadsTableComponent {
     });
   }
 
-  ngAfterViewInit(): void {
-    this.filterForm.valueChanges.pipe(tap((data) => console.log(data))).subscribe()
-  }
+  readonly selectedScopes$: Observable<string[]> =
+    this.scopeFilterForm.valueChanges.pipe(
+      startWith([]),
+      map((scopes) =>
+        Object.keys(scopes).reduce((prev: string[], curr: string) => {
+          if (scopes[curr]) {
+            return [...prev, curr];
+          }
+          return prev;
+        }, [])
+      )
+    );
+
+  readonly selectedSizes$: Observable<string[]> =
+    this.sizeFilterForm.valueChanges.pipe(
+      startWith([]),
+      map((sizeOptions) =>
+        Object.keys(sizeOptions).reduce((prev: string[], curr: string) => {
+          if (sizeOptions[curr]) {
+            return [...prev, curr];
+          }
+          return prev;
+        }, [])
+      )
+    );
+
+  readonly currentFilterValues$: Observable<FilterValuesQueryModel> =
+    combineLatest([
+      this.selectedScopes$,
+      this.selectedSizes$,
+      this.companySizeList$,
+    ]).pipe(
+      map(([scopes, sizes, sizeList]) => {
+        const sizeMap = sizeList.reduce(
+          (prev, curr) => ({ ...prev, [curr.name]: curr }),
+          {} as Record<string, CompanySizeOptionQueryModel>
+        );
+        return {
+          scopes: new Set<string>(scopes),
+          sizes: sizes.map((sizeName) => sizeMap[sizeName]),
+        };
+      })
+    );
+
+  readonly filteredLeads$: Observable<LeadQueryModel[]> = combineLatest([
+    this.leads$,
+    this.currentFilterValues$,
+  ]).pipe(
+    map(([leads, currenFilterValues]) => {
+      return leads.filter((lead) =>
+        currenFilterValues.scopes.size !== 0
+          ? lead.scopesIds.find((scopeId: string) =>
+              currenFilterValues.scopes.has(scopeId)
+            )
+          : true
+      );
+    })
+  );
+
   showFilterModal(): void {
     this._filterModalStatusSubject.next(true);
   }
@@ -115,5 +173,4 @@ export class LeadsTableComponent {
       this.sizeFilterForm.addControl(sizeOption.name, new FormControl(false))
     );
   }
-
 }
